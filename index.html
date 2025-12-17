@@ -1,241 +1,272 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Bridge House Taphouse | Ambridge, PA</title>
-  <meta name="description" content="Bridge House Taphouse — craft beer, cocktails, and great food in Ambridge, PA. View menu, drink specials, and join VIP perks." />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bridge House Taphouse | Ambridge, PA</title>
+<meta name="description" content="Bridge House Taphouse — craft beer, cocktails, and great food in Ambridge, PA.">
 
-  <style>
-    :root{
-      --bg:#0c0f12;
-      --panel:#121820;
-      --panel2:#0f141b;
-      --text:#e9eef6;
-      --muted:#a7b2c3;
-      --brand:#e3b04b;
-      --brand2:#7dd3fc;
-      --stroke:rgba(255,255,255,.10);
-      --shadow: 0 16px 40px rgba(0,0,0,.45);
-      --radius:18px;
-      --radius2:26px;
-      --max: 1120px;
-    }
+<style>
+:root{
+  --bg:#0c0f12;
+  --panel:#141a22;
+  --text:#e9eef6;
+  --muted:#a7b2c3;
+  --gold:#e3b04b;
+  --stroke:rgba(255,255,255,.12);
+  --radius:18px;
+  --max:1100px;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+  background:var(--bg);
+  color:var(--text);
+}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--max);margin:auto;padding:24px}
 
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
-      background: radial-gradient(1200px 700px at 20% 0%, rgba(227,176,75,.14), transparent 55%),
-                  radial-gradient(900px 600px at 80% 10%, rgba(125,211,252,.12), transparent 55%),
-                  var(--bg);
-      color:var(--text);
-      line-height:1.35;
-    }
-    a{color:inherit}
-    .wrap{max-width:var(--max); margin:0 auto; padding:24px;}
-    .nav{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter: blur(10px);
-      background: rgba(12,15,18,.70);
-      border-bottom:1px solid var(--stroke);
-    }
-    .nav-inner{
-      max-width:var(--max); margin:0 auto; padding:12px 24px;
-      display:flex; align-items:center; justify-content:space-between; gap:14px;
-    }
-    .brand{
-      display:flex; align-items:center; gap:10px;
-      letter-spacing:.2px;
-    }
-    .brand-badge{
-      width:38px; height:38px; border-radius:12px;
-      background: linear-gradient(135deg, rgba(227,176,75,.95), rgba(125,211,252,.65));
-      display:grid; place-items:center;
-      box-shadow: var(--shadow);
-      font-weight:800;
-      color:#0b0f12;
-    }
-    .brand-title{font-weight:800}
-    .brand-sub{color:var(--muted); font-size:12px; margin-top:2px}
-    .nav-links{
-      display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;
-    }
-    .chip{
-      text-decoration:none;
-      border:1px solid var(--stroke);
-      background: rgba(255,255,255,.04);
-      padding:8px 10px;
-      border-radius:999px;
-      font-size:13px;
-      color:var(--text);
-      transition:.18s ease;
-    }
-    .chip:hover{transform: translateY(-1px); border-color: rgba(227,176,75,.35)}
-    .chip.primary{
-      background: rgba(227,176,75,.14);
-      border-color: rgba(227,176,75,.35);
-    }
+/* NAV */
+.nav{
+  position:sticky;top:0;z-index:10;
+  background:#0b0f14;
+  border-bottom:1px solid var(--stroke);
+}
+.nav-inner{
+  max-width:var(--max);
+  margin:auto;
+  padding:14px 24px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.logo{font-weight:900;font-size:18px}
+.nav a{margin-left:12px;font-size:14px;color:var(--muted)}
+.nav a:hover{color:var(--gold)}
 
-    /* Hero */
-    .hero{
-      padding:22px 0 10px;
-    }
-    .hero-grid{
-      display:grid;
-      grid-template-columns: 1.25fr .75fr;
-      gap:18px;
-      align-items:stretch;
-    }
-    .card{
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border:1px solid var(--stroke);
-      border-radius: var(--radius2);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
-    .hero-main{
-      padding:26px;
-      position:relative;
-      min-height: 340px;
-    }
-    .kicker{
-      color: var(--brand);
-      font-weight:800;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      font-size:12px;
-    }
-    h1{margin:10px 0 10px; font-size:42px; line-height:1.05}
-    .lead{color:var(--muted); font-size:16px; max-width: 58ch}
-    .cta-row{display:flex; gap:10px; flex-wrap:wrap; margin-top:16px}
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center; gap:8px;
-      padding:11px 14px;
-      border-radius:12px;
-      border:1px solid var(--stroke);
-      background: rgba(255,255,255,.05);
-      text-decoration:none;
-      font-weight:700;
-      font-size:14px;
-      transition:.18s ease;
-    }
-    .btn:hover{transform:translateY(-1px)}
-    .btn.gold{
-      background: rgba(227,176,75,.18);
-      border-color: rgba(227,176,75,.45);
-    }
-    .meta{
-      display:grid; grid-template-columns: 1fr 1fr;
-      gap:10px;
-      margin-top:18px;
-    }
-    .meta .mini{
-      padding:12px;
-      border-radius:14px;
-      border:1px solid var(--stroke);
-      background: rgba(0,0,0,.15);
-    }
-    .mini .t{font-weight:800; font-size:13px}
-    .mini .s{color:var(--muted); font-size:13px; margin-top:4px}
-    .hero-photos{
-      display:grid;
-      grid-template-rows: 1fr 1fr 1fr;
-      gap:12px;
-      padding:12px;
-    }
-    .photo{
-      border-radius:16px;
-      border:1px solid var(--stroke);
-      overflow:hidden;
-      background: rgba(0,0,0,.25);
-      position:relative;
-    }
-    .photo img{
-      width:100%; height:100%;
-      object-fit:cover;
-      display:block;
-      filter: contrast(1.05) saturate(1.05);
-    }
-    .photo .tag{
-      position:absolute; left:10px; bottom:10px;
-      background: rgba(0,0,0,.55);
-      border:1px solid rgba(255,255,255,.18);
-      padding:6px 10px;
-      border-radius:999px;
-      font-weight:700;
-      font-size:12px;
-      color:#fff;
-    }
+/* HERO */
+.hero{
+  padding:60px 0;
+}
+.hero h1{
+  font-size:42px;
+  margin:0 0 10px;
+}
+.hero p{
+  max-width:600px;
+  color:var(--muted);
+  font-size:16px;
+}
+.hero .cta{
+  margin-top:20px;
+}
+.btn{
+  display:inline-block;
+  padding:12px 18px;
+  border-radius:12px;
+  border:1px solid var(--stroke);
+  margin-right:10px;
+  font-weight:700;
+}
+.btn.primary{
+  background:rgba(227,176,75,.2);
+  border-color:rgba(227,176,75,.5);
+}
 
-    /* Sections */
-    section{padding:22px 0}
-    .section-title{
-      display:flex; align-items:flex-end; justify-content:space-between; gap:10px; flex-wrap:wrap;
-      margin-bottom:12px;
-    }
-    .section-title h2{margin:0; font-size:26px}
-    .section-title p{margin:0; color:var(--muted); max-width:65ch}
-    .grid-2{display:grid; grid-template-columns: 1fr 1fr; gap:16px;}
-    .grid-3{display:grid; grid-template-columns: repeat(3, 1fr); gap:16px;}
+/* SECTIONS */
+section{padding:50px 0}
+h2{font-size:28px;margin-bottom:10px}
+.section-desc{color:var(--muted);margin-bottom:20px}
 
-    /* Menu */
-    .menu-tools{
-      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
-    }
-    .search{
-      flex:1;
-      min-width: 220px;
-      display:flex; align-items:center; gap:10px;
-      border:1px solid var(--stroke);
-      background: rgba(255,255,255,.04);
-      padding:10px 12px;
-      border-radius:12px;
-    }
-    .search input{
-      width:100%;
-      background:transparent;
-      border:0;
-      outline:0;
-      color:var(--text);
-      font-size:14px;
-    }
-    .pillbar{display:flex; gap:8px; flex-wrap:wrap}
-    .pill{
-      border:1px solid var(--stroke);
-      background: rgba(255,255,255,.03);
-      border-radius:999px;
-      padding:8px 10px;
-      font-size:13px;
-      font-weight:700;
-      cursor:pointer;
-      user-select:none;
-      transition:.15s ease;
-    }
-    .pill.active{
-      border-color: rgba(227,176,75,.45);
-      background: rgba(227,176,75,.14);
-    }
+/* CARDS */
+.card{
+  background:var(--panel);
+  border:1px solid var(--stroke);
+  border-radius:var(--radius);
+  padding:20px;
+  margin-bottom:20px;
+}
 
-    .menu-grid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:16px;
-      margin-top:14px;
-    }
-    .menu-card{padding:14px 14px 6px}
-    .menu-cat{
-      display:flex; align-items:center; justify-content:space-between;
-      padding:12px 14px;
-      border-radius:16px;
-      background: rgba(0,0,0,.16);
-      border:1px solid var(--stroke);
-      margin-bottom:10px;
-    }
-    .menu-cat h3{margin:0; font-size:16px}
-    .menu-cat span{color:var(--muted); font-size:12px}
-    .item{
-      display:grid;
-      grid-template-columns: 1fr auto;
-      gap:10px;
-      p
+/* MENU */
+.menu-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+.menu-item{
+  display:flex;
+  justify-content:space-between;
+  border-bottom:1px dashed var(--stroke);
+  padding:8px 0;
+}
+.menu-item span:last-child{color:var(--gold);font-weight:700}
+.menu-note{color:var(--muted);font-size:13px}
+
+/* SPECIALS */
+.special{
+  display:flex;
+  justify-content:space-between;
+  padding:10px 0;
+}
+
+/* VIP */
+form{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+input{
+  padding:12px;
+  border-radius:12px;
+  border:1px solid var(--stroke);
+  background:#0b0f14;
+  color:var(--text);
+}
+.full{grid-column:1 / -1}
+.submit{
+  grid-column:1 / -1;
+  margin-top:10px;
+}
+
+/* FOOTER */
+footer{
+  border-top:1px solid var(--stroke);
+  padding:30px 0;
+  color:var(--muted);
+  font-size:14px;
+}
+
+@media(max-width:800px){
+  .menu-grid{grid-template-columns:1fr}
+  form{grid-template-columns:1fr}
+  .hero h1{font-size:34px}
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<div class="nav">
+  <div class="nav-inner">
+    <div class="logo">Bridge House Taphouse</div>
+    <div>
+      <a href="#menu">Menu</a>
+      <a href="#specials">Specials</a>
+      <a href="#vip">VIP</a>
+      <a href="#visit">Visit</a>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Good drinks. Great food.<br>Feels like your spot.</h1>
+  <p>
+    Bridge House Taphouse is a neighborhood bar and kitchen where the food hits,
+    the drinks flow, and it feels like everyone knows your name.
+  </p>
+  <div class="cta">
+    <a class="btn primary" href="#menu">View Menu</a>
+    <a class="btn" href="#vip">VIP Perks</a>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu">
+  <h2>Menu</h2>
+  <div class="section-desc">Simple, classic favorites done right.</div>
+
+  <div class="menu-grid">
+    <div class="card">
+      <h3>Burgers & Sandwiches</h3>
+      <div class="menu-item"><span>Bridgetown Burger</span><span>$12</span></div>
+      <div class="menu-item"><span>Velvet Elvis Burger</span><span>$14</span></div>
+      <div class="menu-item"><span>Fish Sandwich</span><span>$13</span></div>
+      <div class="menu-item"><span>Pulled Pork</span><span>$12</span></div>
+    </div>
+
+    <div class="card">
+      <h3>Plates & Salads</h3>
+      <div class="menu-item"><span>Steak Salad</span><span>$15</span></div>
+      <div class="menu-item"><span>Chicken Salad</span><span>$13</span></div>
+      <div class="menu-item"><span>Cuban Sandwich</span><span>$13</span></div>
+    </div>
+
+    <div class="card">
+      <h3>Appetizers</h3>
+      <div class="menu-item"><span>Hot Honey Wings</span><span>$11</span></div>
+      <div class="menu-item"><span>Black & Bleu Bites</span><span>$10</span></div>
+      <div class="menu-item"><span>Fried Cheese Curds</span><span>$9</span></div>
+    </div>
+
+    <div class="card">
+      <h3>Sides</h3>
+      <div class="menu-item"><span>Seasoned Fries</span><span>$4</span></div>
+      <div class="menu-item"><span>Coleslaw</span><span>$3</span></div>
+    </div>
+  </div>
+
+  <p class="menu-note">Menu items and prices subject to change.</p>
+</section>
+
+<!-- SPECIALS -->
+<section id="specials">
+  <h2>Drink Specials</h2>
+  <div class="section-desc">Rotating drafts, cocktails, and crowd favorites.</div>
+
+  <div class="card">
+    <div class="special"><span>Draft Beer Specials</span><span>$4–$5</span></div>
+    <div class="special"><span>Espresso Martini Night</span><span>$8</span></div>
+    <div class="special"><span>Whiskey & Bourbon Picks</span><span>Ask Bartender</span></div>
+    <p class="menu-note">Check back often — specials rotate.</p>
+  </div>
+</section>
+
+<!-- VIP -->
+<section id="vip">
+  <h2>Be on the Inside</h2>
+  <div class="section-desc">
+    Join the Bridge House list for surprise perks, early specials, and regular-status treatment.
+  </div>
+
+  <div class="card">
+    <form>
+      <input placeholder="Full Name" required>
+      <input placeholder="Phone Number" required>
+      <input class="full" type="email" placeholder="Email Address" required>
+      <div class="submit">
+        <button class="btn primary" type="submit">Unlock VIP Perks</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section id="visit">
+  <h2>Visit Us</h2>
+  <div class="card">
+    <p><strong>Bridge House Taphouse</strong><br>
+    939 Merchant St<br>
+    Ambridge, PA 15003</p>
+    <p>Open daily • 11:00 AM – 10:00 PM</p>
+    <a class="btn" target="_blank"
+       href="https://www.google.com/maps/search/?api=1&query=939+Merchant+St+Ambridge+PA+15003">
+       Get Directions
+    </a>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    © Bridge House Taphouse • Ambridge, PA
+  </div>
+</footer>
+
+</body>
+</html>
