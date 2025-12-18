@@ -136,14 +136,15 @@ h2{
 
 /* CARDS */
 .card{
-  background:var(--panel);
+  background:rgba(20,26,34,.9);
   border:1px solid var(--stroke);
   border-radius:var(--radius);
   padding:20px;
   margin-bottom:20px;
+  backdrop-filter: blur(6px);
 }
 
-/* MENU */
+/* MENU GRID */
 .menu-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -165,6 +166,38 @@ h2{
 .menu-note{
   color:var(--muted);
   font-size:13px;
+}
+
+/* ✅ MENU BACKGROUND IMAGE (behind the cards) */
+#menu{
+  position:relative;
+  overflow:hidden;
+  border-radius:24px;
+}
+
+#menu::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(
+      rgba(12,15,18,.88),
+      rgba(12,15,18,.92)
+    ),
+    url("images/menu-bg.jpg") center / cover no-repeat;
+  transform:scale(1.02);
+  filter:saturate(1.05) contrast(1.05);
+  z-index:0;
+}
+
+#menu > *{
+  position:relative;
+  z-index:1;
+}
+
+/* FULL MENU BUTTON AREA */
+.menu-actions{
+  margin-top:18px;
 }
 
 /* VIP FORM */
@@ -201,6 +234,7 @@ footer{
   .menu-grid{grid-template-columns:1fr}
   form{grid-template-columns:1fr}
   .hero h1{font-size:34px}
+  #menu{border-radius:18px;}
 }
 </style>
 </head>
@@ -261,6 +295,11 @@ footer{
   </div>
 
   <p class="menu-note">Menu items and prices subject to change.</p>
+
+  <!-- ✅ Full Menu button -->
+  <div class="menu-actions">
+    <a class="btn primary" href="menu.html">Full Menu</a>
+  </div>
 </section>
 
 <!-- VISIT -->
