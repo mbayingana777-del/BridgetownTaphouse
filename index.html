@@ -168,11 +168,17 @@ h2{
   font-size:13px;
 }
 
-/* ✅ MENU BACKGROUND IMAGE (behind the cards) */
+/* ✅ MENU: burgers clear at top, menu content underneath */
 #menu{
   position:relative;
   overflow:hidden;
   border-radius:24px;
+
+  /* photo zone height (burgers area) */
+  padding-top:240px; /* adjust 200–300 if needed */
+  padding-left:24px;
+  padding-right:24px;
+  padding-bottom:24px;
 }
 
 #menu::before{
@@ -180,24 +186,32 @@ h2{
   position:absolute;
   inset:0;
   background:
-    /* light top = burgers visible, dark bottom = readable menu */
     linear-gradient(
       180deg,
-      rgba(12,15,18,.15) 0%,
-      rgba(12,15,18,.45) 35%,
-      rgba(12,15,18,.75) 65%,
-      rgba(12,15,18,.92) 100%
+      rgba(12,15,18,.05) 0%,
+      rgba(12,15,18,.12) 35%,
+      rgba(12,15,18,.55) 62%,
+      rgba(12,15,18,.88) 100%
     ),
     url("images/menu-burgers.jpg") center top / cover no-repeat;
 
   transform:scale(1.02);
-  filter:saturate(1.08) contrast(1.08);
+  filter:saturate(1.18) contrast(1.12) brightness(1.06);
   z-index:0;
 }
 
 #menu > *{
   position:relative;
   z-index:1;
+}
+
+/* ✅ Dark board so menu sits cleanly underneath the burgers */
+.menu-board{
+  background:rgba(12,15,18,.82);
+  border:1px solid var(--stroke);
+  border-radius:18px;
+  padding:22px;
+  backdrop-filter: blur(6px);
 }
 
 /* FULL MENU BUTTON AREA */
@@ -239,9 +253,14 @@ footer{
   .menu-grid{grid-template-columns:1fr}
   form{grid-template-columns:1fr}
   .hero h1{font-size:34px}
-  #menu{border-radius:18px;}
+  #menu{
+    border-radius:18px;
+    padding-top:200px; /* smaller photo zone on mobile */
+    padding-left:16px;
+    padding-right:16px;
+    padding-bottom:16px;
+  }
 }
-
 </style>
 </head>
 
@@ -280,31 +299,32 @@ footer{
 
 <!-- MENU -->
 <section id="menu">
-  <h2>Menu</h2>
-  <div class="section-desc">Simple, classic favorites done right.</div>
+  <div class="menu-board">
+    <h2>Menu</h2>
+    <div class="section-desc">Simple, classic favorites done right.</div>
 
-  <div class="menu-grid">
-    <div class="card">
-      <h3>Burgers & Sandwiches</h3>
-      <div class="menu-item"><span>Bridgetown Burger</span><span>$12</span></div>
-      <div class="menu-item"><span>Velvet Elvis Burger</span><span>$14</span></div>
-      <div class="menu-item"><span>Fish Sandwich</span><span>$13</span></div>
-      <div class="menu-item"><span>Pulled Pork</span><span>$12</span></div>
+    <div class="menu-grid">
+      <div class="card">
+        <h3>Burgers & Sandwiches</h3>
+        <div class="menu-item"><span>Bridgetown Burger</span><span>$12</span></div>
+        <div class="menu-item"><span>Velvet Elvis Burger</span><span>$14</span></div>
+        <div class="menu-item"><span>Fish Sandwich</span><span>$13</span></div>
+        <div class="menu-item"><span>Pulled Pork</span><span>$12</span></div>
+      </div>
+
+      <div class="card">
+        <h3>Plates & Salads</h3>
+        <div class="menu-item"><span>Steak Salad</span><span>$15</span></div>
+        <div class="menu-item"><span>Chicken Salad</span><span>$13</span></div>
+        <div class="menu-item"><span>Cuban Sandwich</span><span>$13</span></div>
+      </div>
     </div>
 
-    <div class="card">
-      <h3>Plates & Salads</h3>
-      <div class="menu-item"><span>Steak Salad</span><span>$15</span></div>
-      <div class="menu-item"><span>Chicken Salad</span><span>$13</span></div>
-      <div class="menu-item"><span>Cuban Sandwich</span><span>$13</span></div>
+    <p class="menu-note">Menu items and prices subject to change.</p>
+
+    <div class="menu-actions">
+      <a class="btn primary" href="menu.html">Full Menu</a>
     </div>
-  </div>
-
-  <p class="menu-note">Menu items and prices subject to change.</p>
-
-  <!-- ✅ Full Menu button -->
-  <div class="menu-actions">
-    <a class="btn primary" href="menu.html">Full Menu</a>
   </div>
 </section>
 
