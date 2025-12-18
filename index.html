@@ -40,7 +40,7 @@ a{color:inherit;text-decoration:none}
 .nav{
   position:sticky;
   top:0;
-  z-index:30;
+  z-index:20;
   background:#0b0f14;
   border-bottom:1px solid var(--stroke);
 }
@@ -65,16 +65,22 @@ a{color:inherit;text-decoration:none}
   color:var(--muted);
 }
 
-.nav a:hover{color:var(--gold);}
+.nav a:hover{
+  color:var(--gold);
+}
 
-/* HERO */
+/* HERO (FULL WIDTH PANORAMIC) */
 .hero{
   width:100vw;
   margin-left:calc(50% - 50vw);
   margin-right:calc(50% - 50vw);
-  padding:140px 0 120px;
+
+  padding:140px 0;
   background:
-    linear-gradient(rgba(12,15,18,.75), rgba(12,15,18,.85)),
+    linear-gradient(
+      rgba(12,15,18,.75),
+      rgba(12,15,18,.85)
+    ),
     url("images/hero.jpg") center / cover no-repeat;
 }
 
@@ -87,11 +93,18 @@ a{color:inherit;text-decoration:none}
 .hero h1{
   font-size:42px;
   margin:0 0 12px;
+  text-shadow:0 10px 30px rgba(0,0,0,.6);
 }
 
 .hero p{
   max-width:620px;
+  font-size:16px;
   color:var(--muted);
+  text-shadow:0 4px 14px rgba(0,0,0,.6);
+}
+
+.hero .cta{
+  margin-top:22px;
 }
 
 .btn{
@@ -99,49 +112,36 @@ a{color:inherit;text-decoration:none}
   padding:12px 18px;
   border-radius:12px;
   border:1px solid var(--stroke);
-  font-weight:700;
   margin-right:10px;
+  font-weight:700;
 }
 
 .btn.primary{
-  background:rgba(227,176,75,.25);
-  border-color:rgba(227,176,75,.6);
+  background:rgba(227,176,75,.2);
+  border-color:rgba(227,176,75,.5);
 }
 
-/* MENU SECTION — BLENDED INTO HERO */
-#menu{
-  position:relative;
-  margin-top:-90px;
-  background:rgba(12,15,18,.88);
-  border-radius:26px;
-  padding:28px;
-  backdrop-filter: blur(10px);
-  box-shadow:0 25px 70px rgba(0,0,0,.7);
-}
+/* SECTIONS */
+section{padding:60px 0}
 
-/* BURGER IMAGE STRIP */
-.menu-hero-img{
-  width:100%;
-  height:260px;
-  border-radius:20px;
-  margin-bottom:26px;
-  background:
-    linear-gradient(
-      rgba(12,15,18,.25),
-      rgba(12,15,18,.65)
-    ),
-    url("images/menu-bg.jpg") center / cover no-repeat;
-}
-
-/* MENU TEXT */
 h2{
   font-size:28px;
-  margin-bottom:6px;
+  margin-bottom:10px;
 }
 
 .section-desc{
   color:var(--muted);
   margin-bottom:20px;
+}
+
+/* CARDS */
+.card{
+  background:rgba(20,26,34,.9);
+  border:1px solid var(--stroke);
+  border-radius:var(--radius);
+  padding:20px;
+  margin-bottom:20px;
+  backdrop-filter: blur(6px);
 }
 
 /* MENU GRID */
@@ -151,18 +151,11 @@ h2{
   gap:20px;
 }
 
-.card{
-  background:rgba(20,26,34,.9);
-  border:1px solid var(--stroke);
-  border-radius:18px;
-  padding:20px;
-}
-
 .menu-item{
   display:flex;
   justify-content:space-between;
-  padding:8px 0;
   border-bottom:1px dashed var(--stroke);
+  padding:8px 0;
 }
 
 .menu-item span:last-child{
@@ -173,14 +166,68 @@ h2{
 .menu-note{
   color:var(--muted);
   font-size:13px;
+}
+
+/* ✅ MENU BACKGROUND IMAGE (behind the cards) */
+#menu{
+  position:relative;
+  overflow:hidden;
+  border-radius:24px;
+}
+
+#menu::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    /* light top = burgers visible, dark bottom = readable menu */
+    linear-gradient(
+      180deg,
+      rgba(12,15,18,.15) 0%,
+      rgba(12,15,18,.45) 35%,
+      rgba(12,15,18,.75) 65%,
+      rgba(12,15,18,.92) 100%
+    ),
+    url("images/menu-burgers.jpg") center top / cover no-repeat;
+
+  transform:scale(1.02);
+  filter:saturate(1.08) contrast(1.08);
+  z-index:0;
+}
+
+#menu > *{
+  position:relative;
+  z-index:1;
+}
+
+/* FULL MENU BUTTON AREA */
+.menu-actions{
+  margin-top:18px;
+}
+
+/* VIP FORM */
+form{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+
+input{
+  padding:12px;
+  border-radius:12px;
+  border:1px solid var(--stroke);
+  background:#0b0f14;
+  color:var(--text);
+}
+
+.full{grid-column:1 / -1}
+
+.submit{
+  grid-column:1 / -1;
   margin-top:10px;
 }
 
-.menu-actions{margin-top:18px}
-
-/* VISIT */
-section{padding:60px 0}
-
+/* FOOTER */
 footer{
   border-top:1px solid var(--stroke);
   padding:30px 0;
@@ -188,13 +235,13 @@ footer{
   font-size:14px;
 }
 
-/* MOBILE */
 @media(max-width:800px){
   .menu-grid{grid-template-columns:1fr}
+  form{grid-template-columns:1fr}
   .hero h1{font-size:34px}
-  #menu{margin-top:-60px}
-  .menu-hero-img{height:200px}
+  #menu{border-radius:18px;}
 }
+
 </style>
 </head>
 
@@ -217,9 +264,15 @@ footer{
 <section class="hero">
   <div class="hero-inner">
     <h1>Where Everybody Knows Your Name</h1>
-    <p>Good drinks, great food, and a neighborhood bar that feels familiar from the moment you walk in.</p>
-    <a class="btn primary" href="#menu">View Menu</a>
-    <a class="btn" href="#vip">VIP Perks</a>
+    <p>
+      Good drinks, great food, and a neighborhood bar that feels familiar
+      from the moment you walk in.
+    </p>
+
+    <div class="cta">
+      <a class="btn primary" href="#menu">View Menu</a>
+      <a class="btn" href="#vip">VIP Perks</a>
+    </div>
   </div>
 </section>
 
@@ -227,10 +280,6 @@ footer{
 
 <!-- MENU -->
 <section id="menu">
-
-  <!-- BURGER IMAGE -->
-  <div class="menu-hero-img"></div>
-
   <h2>Menu</h2>
   <div class="section-desc">Simple, classic favorites done right.</div>
 
@@ -253,10 +302,10 @@ footer{
 
   <p class="menu-note">Menu items and prices subject to change.</p>
 
+  <!-- ✅ Full Menu button -->
   <div class="menu-actions">
     <a class="btn primary" href="menu.html">Full Menu</a>
   </div>
-
 </section>
 
 <!-- VISIT -->
@@ -264,8 +313,11 @@ footer{
   <h2>Visit Us</h2>
   <div class="card">
     <p><strong>Bridgetown Taphouse</strong><br>
-    939 Merchant St<br>Ambridge, PA 15003</p>
+    939 Merchant St<br>
+    Ambridge, PA 15003</p>
+
     <p>Open daily • 11:00 AM – 10:00 PM</p>
+
     <a class="btn" target="_blank"
        href="https://www.google.com/maps/search/?api=1&query=939+Merchant+St+Ambridge+PA+15003">
        Get Directions
