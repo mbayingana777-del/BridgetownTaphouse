@@ -180,13 +180,18 @@ h2{
   position:absolute;
   inset:0;
   background:
+    /* light top = burgers visible, dark bottom = readable menu */
     linear-gradient(
-      rgba(12,15,18,.88),
-      rgba(12,15,18,.92)
+      180deg,
+      rgba(12,15,18,.15) 0%,
+      rgba(12,15,18,.45) 35%,
+      rgba(12,15,18,.75) 65%,
+      rgba(12,15,18,.92) 100%
     ),
-    url("images/menu-bg.jpg") center / cover no-repeat;
+    url("images/menu-burgers.jpg") center top / cover no-repeat;
+
   transform:scale(1.02);
-  filter:saturate(1.05) contrast(1.05);
+  filter:saturate(1.08) contrast(1.08);
   z-index:0;
 }
 
