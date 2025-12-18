@@ -16,10 +16,12 @@
   --gold:#e3b04b;
   --stroke:rgba(255,255,255,.12);
   --radius:18px;
+  --radius-lg:26px;
   --max:1100px;
 }
 
 *{box-sizing:border-box}
+html{scroll-behavior:smooth}
 
 body{
   margin:0;
@@ -64,23 +66,17 @@ a{color:inherit;text-decoration:none}
   font-size:14px;
   color:var(--muted);
 }
-
-.nav a:hover{
-  color:var(--gold);
-}
+.nav a:hover{color:var(--gold)}
 
 /* HERO (FULL WIDTH PANORAMIC) */
 .hero{
   width:100vw;
   margin-left:calc(50% - 50vw);
   margin-right:calc(50% - 50vw);
-
   padding:140px 0;
+
   background:
-    linear-gradient(
-      rgba(12,15,18,.75),
-      rgba(12,15,18,.85)
-    ),
+    linear-gradient(rgba(12,15,18,.75), rgba(12,15,18,.86)),
     url("images/hero.jpg") center / cover no-repeat;
 }
 
@@ -103,235 +99,7 @@ a{color:inherit;text-decoration:none}
   text-shadow:0 4px 14px rgba(0,0,0,.6);
 }
 
-.hero .cta{
-  margin-top:22px;
-}
+.hero .cta{margin-top:22px}
 
 .btn{
-  display:inline-block;
-  padding:12px 18px;
-  border-radius:12px;
-  border:1px solid var(--stroke);
-  margin-right:10px;
-  font-weight:700;
-}
-
-.btn.primary{
-  background:rgba(227,176,75,.2);
-  border-color:rgba(227,176,75,.5);
-}
-
-/* SECTIONS */
-section{padding:60px 0}
-
-h2{
-  font-size:28px;
-  margin-bottom:10px;
-}
-
-.section-desc{
-  color:var(--muted);
-  margin-bottom:20px;
-}
-
-/* CARDS */
-.card{
-  background:rgba(20,26,34,.9);
-  border:1px solid var(--stroke);
-  border-radius:var(--radius);
-  padding:20px;
-  margin-bottom:20px;
-  backdrop-filter: blur(6px);
-}
-
-/* MENU GRID */
-.menu-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:20px;
-}
-
-.menu-item{
-  display:flex;
-  justify-content:space-between;
-  border-bottom:1px dashed var(--stroke);
-  padding:8px 0;
-}
-
-.menu-item span:last-child{
-  color:var(--gold);
-  font-weight:700;
-}
-
-.menu-note{
-  color:var(--muted);
-  font-size:13px;
-}
-
-/* ✅ MENU BACKGROUND IMAGE (behind the cards) */
-#menu{
-  position:relative;
-  overflow:hidden;
-  border-radius:24px;
-}
-
-#menu::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    /* light top = burgers visible, dark bottom = readable menu */
-    linear-gradient(
-      180deg,
-      rgba(12,15,18,.15) 0%,
-      rgba(12,15,18,.45) 35%,
-      rgba(12,15,18,.75) 65%,
-      rgba(12,15,18,.92) 100%
-    ),
-    url("images/menu-burgers.jpg") center top / cover no-repeat;
-
-  transform:scale(1.02);
-  filter:saturate(1.08) contrast(1.08);
-  z-index:0;
-}
-
-#menu > *{
-  position:relative;
-  z-index:1;
-}
-
-/* FULL MENU BUTTON AREA */
-.menu-actions{
-  margin-top:18px;
-}
-
-/* VIP FORM */
-form{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:14px;
-}
-
-input{
-  padding:12px;
-  border-radius:12px;
-  border:1px solid var(--stroke);
-  background:#0b0f14;
-  color:var(--text);
-}
-
-.full{grid-column:1 / -1}
-
-.submit{
-  grid-column:1 / -1;
-  margin-top:10px;
-}
-
-/* FOOTER */
-footer{
-  border-top:1px solid var(--stroke);
-  padding:30px 0;
-  color:var(--muted);
-  font-size:14px;
-}
-
-@media(max-width:800px){
-  .menu-grid{grid-template-columns:1fr}
-  form{grid-template-columns:1fr}
-  .hero h1{font-size:34px}
-  #menu{border-radius:18px;}
-}
-
-</style>
-</head>
-
-<body>
-
-<!-- NAV -->
-<div class="nav">
-  <div class="nav-inner">
-    <div class="logo">Bridgetown Taphouse</div>
-    <div>
-      <a href="#menu">Menu</a>
-      <a href="#specials">Specials</a>
-      <a href="#vip">VIP</a>
-      <a href="#visit">Visit</a>
-    </div>
-  </div>
-</div>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-inner">
-    <h1>Where Everybody Knows Your Name</h1>
-    <p>
-      Good drinks, great food, and a neighborhood bar that feels familiar
-      from the moment you walk in.
-    </p>
-
-    <div class="cta">
-      <a class="btn primary" href="#menu">View Menu</a>
-      <a class="btn" href="#vip">VIP Perks</a>
-    </div>
-  </div>
-</section>
-
-<div class="wrap">
-
-<!-- MENU -->
-<section id="menu">
-  <h2>Menu</h2>
-  <div class="section-desc">Simple, classic favorites done right.</div>
-
-  <div class="menu-grid">
-    <div class="card">
-      <h3>Burgers & Sandwiches</h3>
-      <div class="menu-item"><span>Bridgetown Burger</span><span>$12</span></div>
-      <div class="menu-item"><span>Velvet Elvis Burger</span><span>$14</span></div>
-      <div class="menu-item"><span>Fish Sandwich</span><span>$13</span></div>
-      <div class="menu-item"><span>Pulled Pork</span><span>$12</span></div>
-    </div>
-
-    <div class="card">
-      <h3>Plates & Salads</h3>
-      <div class="menu-item"><span>Steak Salad</span><span>$15</span></div>
-      <div class="menu-item"><span>Chicken Salad</span><span>$13</span></div>
-      <div class="menu-item"><span>Cuban Sandwich</span><span>$13</span></div>
-    </div>
-  </div>
-
-  <p class="menu-note">Menu items and prices subject to change.</p>
-
-  <!-- ✅ Full Menu button -->
-  <div class="menu-actions">
-    <a class="btn primary" href="menu.html">Full Menu</a>
-  </div>
-</section>
-
-<!-- VISIT -->
-<section id="visit">
-  <h2>Visit Us</h2>
-  <div class="card">
-    <p><strong>Bridgetown Taphouse</strong><br>
-    939 Merchant St<br>
-    Ambridge, PA 15003</p>
-
-    <p>Open daily • 11:00 AM – 10:00 PM</p>
-
-    <a class="btn" target="_blank"
-       href="https://www.google.com/maps/search/?api=1&query=939+Merchant+St+Ambridge+PA+15003">
-       Get Directions
-    </a>
-  </div>
-</section>
-
-</div>
-
-<footer>
-  <div class="wrap">
-    © Bridgetown Taphouse • Ambridge, PA
-  </div>
-</footer>
-
-</body>
-</html>
+  displa
