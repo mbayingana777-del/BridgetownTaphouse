@@ -131,7 +131,7 @@ h2{ font-size:28px; margin:0 0 10px; }
 
 /* MENU (clean, no background image) */
 #menu{
-  padding-top:74px;          /* pushed down so it never clashes with hero */
+  padding-top:74px;
   margin-top:10px;
 }
 
@@ -219,7 +219,7 @@ h2{ font-size:28px; margin:0 0 10px; }
   line-height:1.35;
 }
 
-/* Photo placeholders (add photos later) */
+/* Photo placeholders */
 .photo-row{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -247,7 +247,7 @@ h2{ font-size:28px; margin:0 0 10px; }
 .photo-slot .overlay{
   position:absolute;
   inset:0;
-  background:linear-gradient(180deg, rgba(12,15,18,.20), rgba(12,15,18,.70));
+  background:linear-gradient(180deg, rgba(12,15,18,.18), rgba(12,15,18,.70));
 }
 
 .photo-slot .label{
@@ -322,12 +322,70 @@ h2{ font-size:28px; margin:0 0 10px; }
   line-height:1.35;
 }
 
-/* CTA area */
-.menu-actions{
-  margin-top:18px;
+/* VISIT: email signup */
+.visit-grid{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:16px;
+  align-items:stretch;
+}
+
+.signup-card{
+  background:rgba(20,26,34,.92);
+  border:1px solid var(--stroke);
+  border-radius:var(--radius);
+  padding:18px;
+}
+
+.signup-title{
+  font-weight:900;
+  margin:0 0 6px;
+  font-size:16px;
+}
+
+.signup-desc{
+  color:var(--muted);
+  font-size:13px;
+  margin:0 0 12px;
+  line-height:1.35;
+}
+
+.signup-form{
   display:flex;
   gap:10px;
   flex-wrap:wrap;
+}
+
+.signup-form input{
+  flex:1 1 220px;
+  min-width:200px;
+  padding:12px;
+  border-radius:12px;
+  border:1px solid var(--stroke);
+  background:#0b0f14;
+  color:var(--text);
+  outline:none;
+}
+
+.signup-form button{
+  border:1px solid rgba(227,176,75,.5);
+  background:rgba(227,176,75,.2);
+  color:var(--text);
+  padding:12px 16px;
+  border-radius:12px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.signup-form button:hover{
+  border-color:rgba(227,176,75,.75);
+  background:rgba(227,176,75,.28);
+}
+
+.micro{
+  margin-top:10px;
+  color:var(--muted);
+  font-size:12px;
 }
 
 /* FOOTER */
@@ -341,6 +399,7 @@ footer{
 @media(max-width:1000px){
   .featured-grid{ grid-template-columns:repeat(2, 1fr); }
   .menu-grid{ grid-template-columns:repeat(2, 1fr); }
+  .visit-grid{ grid-template-columns:1fr; }
 }
 
 @media(max-width:800px){
@@ -438,19 +497,21 @@ footer{
     </div>
   </div>
 
-  <!-- PHOTO PLACEHOLDERS (Add photos later) -->
+  <!-- PHOTOS -->
   <div class="photo-row">
-    <!-- Replace src="" with your image path, ex: images/menu-burger.jpg -->
     <div class="photo-slot">
-      <!-- <img src="images/menu-burger.jpg" alt="Burgers at Bridgetown Taphouse"> -->
-     <img src="images/best-seller-burgers.jpg" alt="Bridgetown Taphouse Best Seller Burgers">
-<div class="overlay"></div>
+      <!-- Replace with your burger image -->
+      <!-- <img src="images/menu-burgers-best-sellers.jpg" alt="Bridgetown best seller burgers"> -->
+      <div class="overlay"></div>
+      <div class="label">Add a Burger Photo</div>
     </div>
 
-  <div class="photo-slot">
-  <img src="images/menu-wings.jpg" alt="Bridgetown Taphouse Wings and Fries">
-  <div class="overlay"></div>
-</div>
+    <div class="photo-slot">
+      <!-- Replace with your wings/chicken image -->
+      <!-- <img src="images/menu-wings.jpg" alt="Bridgetown wings and fries"> -->
+      <div class="overlay"></div>
+      <div class="label">Add a Wings / Chicken Photo</div>
+    </div>
   </div>
 
   <!-- FULL MENU -->
@@ -593,9 +654,7 @@ footer{
           <div class="top"><div class="name">Traditional Wings <span class="star">★</span></div></div>
           <div class="sub">Served with classic options and house flavors.</div>
         </li>
-        <li class="item">
-          <div class="top"><div class="name">Boneless Wings</div></div>
-        </li>
+        <li class="item"><div class="top"><div class="name">Boneless Wings</div></div></li>
         <li class="item">
           <div class="top"><div class="name">Dry Rubs</div></div>
           <div class="sub">Buffalo Dust, Cajun, Lemon Pepper, Dry Ranch.</div>
@@ -608,28 +667,43 @@ footer{
     </div>
 
   </div>
-
-  <div class="menu-actions">
-    <a class="btn primary" href="menu.html">Full Menu</a>
-    <!-- Later: link to a PDF if you create one -->
-    <!-- <a class="btn" href="BridgetownMenu.pdf" target="_blank">Download PDF</a> -->
-  </div>
 </section>
 
 <!-- VISIT -->
 <section id="visit">
   <h2>Visit Us</h2>
-  <div class="card">
-    <p><strong>Bridgetown Taphouse</strong><br>
-    939 Merchant St<br>
-    Ambridge, PA 15003</p>
 
-    <p>Open daily • 11:00 AM – 10:00 PM</p>
+  <div class="visit-grid">
+    <!-- Visit card -->
+    <div class="card" style="margin-bottom:0;">
+      <p><strong>Bridgetown Taphouse</strong><br>
+      939 Merchant St<br>
+      Ambridge, PA 15003</p>
 
-    <a class="btn" target="_blank"
-       href="https://www.google.com/maps/search/?api=1&query=939+Merchant+St+Ambridge+PA+15003">
-       Get Directions
-    </a>
+      <p>Open daily • 11:00 AM – 10:00 PM</p>
+
+      <a class="btn" target="_blank"
+         href="https://www.google.com/maps/search/?api=1&query=939+Merchant+St+Ambridge+PA+15003">
+         Get Directions
+      </a>
+    </div>
+
+    <!-- Email signup card -->
+    <div class="signup-card">
+      <div class="signup-title">Bridgetown Offers</div>
+      <div class="signup-desc">Get specials, events, and promos sent to your inbox. No spam.</div>
+
+      <!--
+        OPTION A (works instantly): mailto opens the user's email app.
+        Replace the email after "mailto:" with the bar's real email if you have it.
+      -->
+      <form class="signup-form" action="mailto:bridgetowntaphouse@gmail.com" method="post" enctype="text/plain">
+        <input type="email" name="email" placeholder="Enter your email" required>
+        <button type="submit">Get Specials</button>
+      </form>
+
+      <div class="micro">Tip: later we can connect this to Mailchimp or Google Sheets for real list-building.</div>
+    </div>
   </div>
 </section>
 
@@ -643,4 +717,3 @@ footer{
 
 </body>
 </html>
-
