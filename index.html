@@ -11,6 +11,7 @@
 :root{
   --bg:#0c0f12;
   --panel:#141a22;
+  --panel2:#0f151d;
   --text:#e9eef6;
   --muted:#a7b2c3;
   --gold:#e3b04b;
@@ -65,22 +66,16 @@ a{color:inherit;text-decoration:none}
   color:var(--muted);
 }
 
-.nav a:hover{
-  color:var(--gold);
-}
+.nav a:hover{ color:var(--gold); }
 
 /* HERO (FULL WIDTH PANORAMIC) */
 .hero{
   width:100vw;
   margin-left:calc(50% - 50vw);
   margin-right:calc(50% - 50vw);
-
   padding:140px 0;
   background:
-    linear-gradient(
-      rgba(12,15,18,.75),
-      rgba(12,15,18,.85)
-    ),
+    linear-gradient(rgba(12,15,18,.75), rgba(12,15,18,.85)),
     url("images/hero.jpg") center / cover no-repeat;
 }
 
@@ -103,9 +98,7 @@ a{color:inherit;text-decoration:none}
   text-shadow:0 4px 14px rgba(0,0,0,.6);
 }
 
-.hero .cta{
-  margin-top:22px;
-}
+.hero .cta{ margin-top:22px; }
 
 .btn{
   display:inline-block;
@@ -122,21 +115,13 @@ a{color:inherit;text-decoration:none}
 }
 
 /* SECTIONS */
-section{padding:60px 0}
-
-h2{
-  font-size:28px;
-  margin-bottom:10px;
-}
-
-.section-desc{
-  color:var(--muted);
-  margin-bottom:20px;
-}
+section{ padding:60px 0; }
+h2{ font-size:28px; margin:0 0 10px; }
+.section-desc{ color:var(--muted); margin:0 0 20px; }
 
 /* CARDS */
 .card{
-  background:rgba(20,26,34,.9);
+  background:rgba(20,26,34,.92);
   border:1px solid var(--stroke);
   border-radius:var(--radius);
   padding:20px;
@@ -144,91 +129,205 @@ h2{
   backdrop-filter: blur(6px);
 }
 
-/* MENU GRID */
-.menu-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:20px;
+/* MENU (clean, no background image) */
+#menu{
+  padding-top:74px;          /* pushed down so it never clashes with hero */
+  margin-top:10px;
 }
 
-.menu-item{
+.menu-top{
   display:flex;
-  justify-content:space-between;
-  border-bottom:1px dashed var(--stroke);
-  padding:8px 0;
+  flex-direction:column;
+  gap:10px;
+  margin-bottom:18px;
 }
 
-.menu-item span:last-child{
-  color:var(--gold);
-  font-weight:700;
-}
-/* HIDE MENU PRICES */
-.menu-item span:last-child{
-  display:none;
-}
-
-.menu-note{
+.menu-subnote{
   color:var(--muted);
   font-size:13px;
 }
 
-/* ✅ MENU BACKGROUND IMAGE (behind the cards) */
-#menu{
-  position:relative;
-  overflow:hidden;
-  border-radius:24px;
+/* Featured best sellers */
+.featured{
+  border-radius:22px;
+  background:linear-gradient(180deg, rgba(20,26,34,.9), rgba(12,15,18,.92));
+  border:1px solid var(--stroke);
+  padding:18px;
+  margin:18px 0 22px;
 }
 
-#menu::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    /* light top = burgers visible, dark bottom = readable menu */
-    linear-gradient(
-      180deg,
-      rgba(12,15,18,.15) 0%,
-      rgba(12,15,18,.45) 35%,
-      rgba(12,15,18,.75) 65%,
-      rgba(12,15,18,.92) 100%
-    ),
-    url("images/menu-burgers.jpg") center top / cover no-repeat;
-
-  transform:scale(1.02);
-  filter:saturate(1.08) contrast(1.08);
-  z-index:0;
+.featured-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:12px;
 }
 
-#menu > *{
-  position:relative;
-  z-index:1;
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:12px;
+  color:var(--muted);
 }
 
-/* FULL MENU BUTTON AREA */
-.menu-actions{
-  margin-top:18px;
+.badge i{
+  display:inline-block;
+  width:10px;height:10px;
+  border-radius:999px;
+  background:rgba(227,176,75,.9);
+  box-shadow:0 0 0 4px rgba(227,176,75,.15);
 }
 
-/* VIP FORM */
-form{
+.featured-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:12px;
+}
+
+.feature-item{
+  background:rgba(15,21,29,.9);
+  border:1px solid rgba(227,176,75,.22);
+  border-radius:16px;
+  padding:14px 14px;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+.feature-item .tag{
+  display:inline-flex;
+  width:max-content;
+  font-size:11px;
+  padding:4px 8px;
+  border-radius:999px;
+  background:rgba(227,176,75,.14);
+  border:1px solid rgba(227,176,75,.30);
+  color:var(--gold);
+  font-weight:700;
+}
+
+.feature-item .name{
+  font-weight:800;
+  letter-spacing:.2px;
+}
+
+.feature-item .desc{
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.35;
+}
+
+/* Photo placeholders (add photos later) */
+.photo-row{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:14px;
+  margin:0 0 22px;
 }
 
-input{
-  padding:12px;
-  border-radius:12px;
+.photo-slot{
+  position:relative;
+  overflow:hidden;
+  border-radius:22px;
   border:1px solid var(--stroke);
-  background:#0b0f14;
-  color:var(--text);
+  background:rgba(20,26,34,.6);
+  min-height:220px;
 }
 
-.full{grid-column:1 / -1}
+.photo-slot img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  filter:saturate(1.03) contrast(1.03);
+}
 
-.submit{
-  grid-column:1 / -1;
-  margin-top:10px;
+.photo-slot .overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg, rgba(12,15,18,.20), rgba(12,15,18,.70));
+}
+
+.photo-slot .label{
+  position:absolute;
+  left:14px; bottom:14px;
+  font-weight:800;
+  text-shadow:0 10px 28px rgba(0,0,0,.65);
+}
+
+/* Full menu grid */
+.menu-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:16px;
+}
+
+.menu-card{
+  background:rgba(20,26,34,.92);
+  border:1px solid var(--stroke);
+  border-radius:22px;
+  padding:18px;
+}
+
+.menu-card h3{
+  margin:0 0 8px;
+  font-size:18px;
+}
+
+.rule{
+  color:var(--muted);
+  font-size:12px;
+  margin:0 0 12px;
+}
+
+.items{
+  list-style:none;
+  padding:0;
+  margin:0;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.item{
+  padding:10px 0;
+  border-bottom:1px dashed rgba(255,255,255,.10);
+}
+
+.item:last-child{ border-bottom:none; }
+
+.item .top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+
+.item .name{
+  font-weight:800;
+}
+
+.star{
+  margin-left:8px;
+  color:var(--gold);
+  font-weight:900;
+}
+
+.item .sub{
+  margin-top:6px;
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.35;
+}
+
+/* CTA area */
+.menu-actions{
+  margin-top:18px;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
 }
 
 /* FOOTER */
@@ -239,13 +338,16 @@ footer{
   font-size:14px;
 }
 
-@media(max-width:800px){
-  .menu-grid{grid-template-columns:1fr}
-  form{grid-template-columns:1fr}
-  .hero h1{font-size:34px}
-  #menu{border-radius:18px;}
+@media(max-width:1000px){
+  .featured-grid{ grid-template-columns:repeat(2, 1fr); }
+  .menu-grid{ grid-template-columns:repeat(2, 1fr); }
 }
 
+@media(max-width:800px){
+  .hero h1{ font-size:34px; }
+  .photo-row{ grid-template-columns:1fr; }
+  .menu-grid{ grid-template-columns:1fr; }
+}
 </style>
 </head>
 
@@ -284,31 +386,234 @@ footer{
 
 <!-- MENU -->
 <section id="menu">
-  <h2>Menu</h2>
-  <div class="section-desc">Simple, classic favorites done right.</div>
+  <div class="menu-top">
+    <h2>Menu</h2>
+    <div class="section-desc">Simple, classic favorites done right.</div>
+    <div class="menu-subnote">Ask your server about daily specials and seasonal items.</div>
+  </div>
 
-  <div class="menu-grid">
-    <div class="card">
-      <h3>Burgers & Sandwiches</h3>
-      <div class="menu-item"><span>Bridgetown Burger</span><span>$12</span></div>
-      <div class="menu-item"><span>Velvet Elvis Burger</span><span>$14</span></div>
-      <div class="menu-item"><span>Fish Sandwich</span><span>$13</span></div>
-      <div class="menu-item"><span>Pulled Pork</span><span>$12</span></div>
+  <!-- BEST SELLERS -->
+  <div class="featured">
+    <div class="featured-head">
+      <div style="font-weight:900;font-size:16px;">Best Sellers</div>
+      <div class="badge"><i></i>Most ordered favorites</div>
     </div>
 
-    <div class="card">
-      <h3>Plates & Salads</h3>
-      <div class="menu-item"><span>Steak Salad</span><span>$15</span></div>
-      <div class="menu-item"><span>Chicken Salad</span><span>$13</span></div>
-      <div class="menu-item"><span>Cuban Sandwich</span><span>$13</span></div>
+    <div class="featured-grid">
+      <div class="feature-item">
+        <div class="tag">Best Seller</div>
+        <div class="name">Bridgetown Burger</div>
+        <div class="desc">Bacon, fried egg, Anaheim pepper, Muenster, sautéed onion, burger sauce.</div>
+      </div>
+
+      <div class="feature-item">
+        <div class="tag">Best Seller</div>
+        <div class="name">Velvet Elvis</div>
+        <div class="desc">Bacon, fried egg, peanut butter, American cheese, mayo, pickle.</div>
+      </div>
+
+      <div class="feature-item">
+        <div class="tag">Best Seller</div>
+        <div class="name">The Animal</div>
+        <div class="desc">Classic build with Thousand Island, sautéed onion, pickles & fixings.</div>
+      </div>
+
+      <div class="feature-item">
+        <div class="tag">Best Seller</div>
+        <div class="name">Pittsburgher</div>
+        <div class="desc">Capicola, fried egg, provolone, slaw.</div>
+      </div>
+
+      <div class="feature-item">
+        <div class="tag">Best Seller</div>
+        <div class="name">Bruschetta Grilled Chicken</div>
+        <div class="desc">Fresh mozzarella, bruschetta, balsamic glaze.</div>
+      </div>
+
+      <div class="feature-item">
+        <div class="tag">Best Seller</div>
+        <div class="name">Wings</div>
+        <div class="desc">Bone-in or boneless with dry rubs and saucy classics.</div>
+      </div>
     </div>
   </div>
 
-  <p class="menu-note">Menu items and prices subject to change.</p>
+  <!-- PHOTO PLACEHOLDERS (Add photos later) -->
+  <div class="photo-row">
+    <!-- Replace src="" with your image path, ex: images/menu-burger.jpg -->
+    <div class="photo-slot">
+      <!-- <img src="images/menu-burger.jpg" alt="Burgers at Bridgetown Taphouse"> -->
+      <div class="overlay"></div>
+      <div class="label">Add a Burger Photo</div>
+    </div>
 
-  <!-- ✅ Full Menu button -->
+    <div class="photo-slot">
+      <!-- <img src="images/menu-wings.jpg" alt="Wings at Bridgetown Taphouse"> -->
+      <div class="overlay"></div>
+      <div class="label">Add a Wings / Chicken Photo</div>
+    </div>
+  </div>
+
+  <!-- FULL MENU -->
+  <div class="menu-grid">
+
+    <!-- STARTERS -->
+    <div class="menu-card">
+      <h3>Starters</h3>
+      <div class="rule">Great to share.</div>
+      <ul class="items">
+        <li class="item"><div class="top"><div class="name">Edamame</div></div></li>
+        <li class="item"><div class="top"><div class="name">Fries or Tots</div></div></li>
+        <li class="item"><div class="top"><div class="name">Chili Fries or Tots</div></div></li>
+        <li class="item">
+          <div class="top"><div class="name">Fresh Mozzarella</div></div>
+          <div class="sub">Tomato, basil, balsamic glaze.</div>
+        </li>
+        <li class="item"><div class="top"><div class="name">Scotch Eggs</div></div></li>
+        <li class="item">
+          <div class="top"><div class="name">Beer-Battered Pickles</div></div>
+          <div class="sub">Fried pickles.</div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- SOUPS & SALADS -->
+    <div class="menu-card">
+      <h3>Soups & Salads</h3>
+      <div class="rule">Dressings include ranch, bleu cheese, balsamic vinaigrette, creamy Italian, oil &amp; vinegar, honey mustard.</div>
+      <ul class="items">
+        <li class="item"><div class="top"><div class="name">Soup of the Day</div></div></li>
+        <li class="item"><div class="top"><div class="name">Turkey Chili</div></div></li>
+        <li class="item"><div class="top"><div class="name">House Salad</div></div></li>
+        <li class="item"><div class="top"><div class="name">Chicken Salad</div></div></li>
+        <li class="item"><div class="top"><div class="name">Steak Salad</div></div></li>
+        <li class="item"><div class="top"><div class="name">Buffalo Grilled Chicken Salad</div></div></li>
+      </ul>
+    </div>
+
+    <!-- BURGERS -->
+    <div class="menu-card">
+      <h3>Burgers</h3>
+      <div class="rule">Choice of beef, turkey, or portobella.</div>
+      <ul class="items">
+        <li class="item">
+          <div class="top"><div class="name">Bridgetown Burger <span class="star">★</span></div></div>
+          <div class="sub">Bacon, fried egg, roasted Anaheim pepper, Muenster, sautéed onion, burger sauce.</div>
+        </li>
+        <li class="item">
+          <div class="top"><div class="name">Classic Burger</div></div>
+          <div class="sub">American cheese, lettuce, tomato, onion.</div>
+        </li>
+        <li class="item">
+          <div class="top"><div class="name">Portobella &amp; Swiss</div></div>
+          <div class="sub">Portobella cap, sautéed onion, Swiss.</div>
+        </li>
+        <li class="item">
+          <div class="top"><div class="name">Black &amp; Bleu</div></div>
+          <div class="sub">Bacon, gorgonzola, Cajun seasoning.</div>
+        </li>
+        <li class="item">
+          <div class="top"><div class="name">Pittsburgher <span class="star">★</span></div></div>
+          <div class="sub">Capicola, fried egg, provolone, slaw.</div>
+        </li>
+        <li class="item">
+          <div class="top"><div class="name">BBQ Burger</div></div>
+          <div class="sub">House braised pulled pork, bacon, cheddar, red onion, chipotle BBQ.</div>
+        </li>
+        <li class="item">
+          <div class="top"><div class="name">Velvet Elvis <span class="star">★</span></div></div>
+          <div class="sub">Bacon, fried egg, peanut butter, American cheese, mayo, pickle.</div>
+        </li>
+        <li class="item">
+          <div class="top"><div class="name">The Animal <span class="star">★</span></div></div>
+          <div class="sub">American cheese, lettuce, tomato, pickle, sautéed onion, Thousand Island.</div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- SANDWICHES -->
+    <div class="menu-card">
+      <h3>Sandwiches</h3>
+      <div class="rule">Classic favorites.</div>
+      <ul class="items">
+        <li class="item"><div class="top"><div class="name">Steak Hoagie</div></div></li>
+        <li class="item"><div class="top"><div class="name">Pulled Pork</div></div></li>
+        <li class="item"><div class="top"><div class="name">House Braised Pulled Pork Sandwich</div></div></li>
+        <li class="item"><div class="top"><div class="name">Cuban</div></div></li>
+        <li class="item"><div class="top"><div class="name">BLT + Egg</div></div></li>
+        <li class="item">
+          <div class="top"><div class="name">Hippie</div></div>
+          <div class="sub">Portobella, gorgonzola, spring mix, sautéed pepper &amp; onion, sundried tomato mayo.</div>
+        </li>
+        <li class="item"><div class="top"><div class="name">Rachel</div></div></li>
+        <li class="item"><div class="top"><div class="name">Reuben</div></div></li>
+        <li class="item"><div class="top"><div class="name">Club</div></div></li>
+        <li class="item"><div class="top"><div class="name">Turkey &amp; Ham Club</div></div></li>
+        <li class="item"><div class="top"><div class="name">Tuna Melt</div></div></li>
+      </ul>
+    </div>
+
+    <!-- GRILLED CHICKEN -->
+    <div class="menu-card">
+      <h3>Grilled Chicken</h3>
+      <div class="rule">Sandwiches built to order.</div>
+      <ul class="items">
+        <li class="item">
+          <div class="top"><div class="name">Grilled C.B.S.</div></div>
+          <div class="sub">Chicken, bacon, Swiss, honey mustard.</div>
+        </li>
+        <li class="item">
+          <div class="top"><div class="name">Bruschetta Grilled Chicken <span class="star">★</span></div></div>
+          <div class="sub">Fresh mozzarella, bruschetta, balsamic glaze.</div>
+        </li>
+        <li class="item">
+          <div class="top"><div class="name">La Flama Blanca</div></div>
+          <div class="sub">Buffalo, bacon, ghost pepper, habanero jack, jalapeño.</div>
+        </li>
+        <li class="item">
+          <div class="top"><div class="name">BBQ Grilled Chicken</div></div>
+          <div class="sub">Bacon, cheddar, chipotle BBQ.</div>
+        </li>
+        <li class="item">
+          <div class="top"><div class="name">Blue Ribbon</div></div>
+          <div class="sub">Ham, Muenster &amp; Swiss, mayo, pickle.</div>
+        </li>
+        <li class="item">
+          <div class="top"><div class="name">Build Your Own Grilled Chicken</div></div>
+          <div class="sub">Choice of wing sauce or seasoning, cheese, and toppings.</div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- WINGS -->
+    <div class="menu-card">
+      <h3>Wings</h3>
+      <div class="rule">Bone-in or boneless. Pick dry rubs or sauces.</div>
+      <ul class="items">
+        <li class="item">
+          <div class="top"><div class="name">Traditional Wings <span class="star">★</span></div></div>
+          <div class="sub">Served with classic options and house flavors.</div>
+        </li>
+        <li class="item">
+          <div class="top"><div class="name">Boneless Wings</div></div>
+        </li>
+        <li class="item">
+          <div class="top"><div class="name">Dry Rubs</div></div>
+          <div class="sub">Buffalo Dust, Cajun, Lemon Pepper, Dry Ranch.</div>
+        </li>
+        <li class="item">
+          <div class="top"><div class="name">Sauces</div></div>
+          <div class="sub">Buffalo, Hot Buffalo, Extra Hot Buffalo, Garlic Parm, Garlic Ranch, Honey Jalapeño, Chipotle BBQ, BBQ, Sriracha Honey.</div>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
   <div class="menu-actions">
     <a class="btn primary" href="menu.html">Full Menu</a>
+    <!-- Later: link to a PDF if you create one -->
+    <!-- <a class="btn" href="BridgetownMenu.pdf" target="_blank">Download PDF</a> -->
   </div>
 </section>
 
@@ -339,3 +644,4 @@ footer{
 
 </body>
 </html>
+
