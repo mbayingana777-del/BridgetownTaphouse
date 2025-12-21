@@ -794,6 +794,42 @@ footer{
     © Bridgetown Taphouse • Ambridge, PA
   </div>
 </footer>
+<script>
+const form = document.getElementById("offersForm");
+const emailInput = document.getElementById("offerEmail");
+const msg = document.getElementById("offerMsg");
+const btn = document.getElementById("offerBtn");
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  btn.disabled = true;
+  msg.textContent = "Submitting…";
+
+  try {
+    await fetch(
+      "https://script.google.com/macros/s/AKfycbzvNhw9TvZAHqzEhEUDH4KjZ2ymNzxi-G35F7jXJBbDYzwE-_1d9uPP1kVosE7tPvI5/exec",
+      {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: emailInput.value,
+          timestamp: new Date().toISOString()
+        })
+      }
+    );
+
+    msg.textContent = "You're in. Watch your inbox.";
+    msg.className = "micro success";
+    form.reset();
+  } catch (err) {
+    msg.textContent = "Something went wrong. Try again.";
+    msg.className = "micro error";
+  }
+
+  btn.disabled = false;
+});
+</script>
 
 </body>
 </html>
