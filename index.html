@@ -4,13 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Full Menu | Bridgetown Taphouse</title>
-<meta name="description" content="Full menu for Bridgetown Taphouse in Ambridge, PA.">
+<title>Bridgetown Taphouse | Ambridge, PA</title>
+<meta name="description" content="Bridgetown Taphouse — a neighborhood bar and kitchen where everybody knows your name. Craft beer, cocktails, and great food in Ambridge, PA.">
 
 <style>
 :root{
   --bg:#0c0f12;
   --panel:#141a22;
+  --panel2:#0f151d;
   --text:#e9eef6;
   --muted:#a7b2c3;
   --gold:#e3b04b;
@@ -20,22 +21,31 @@
 }
 
 *{box-sizing:border-box}
+
 body{
   margin:0;
   font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
   background:var(--bg);
   color:var(--text);
 }
+
 a{color:inherit;text-decoration:none}
 
-.wrap{ max-width:var(--max); margin:auto; padding:24px; }
+.wrap{
+  max-width:var(--max);
+  margin:auto;
+  padding:24px;
+}
 
 /* NAV */
 .nav{
-  position:sticky; top:0; z-index:20;
+  position:sticky;
+  top:0;
+  z-index:20;
   background:#0b0f14;
   border-bottom:1px solid var(--stroke);
 }
+
 .nav-inner{
   max-width:var(--max);
   margin:auto;
@@ -45,195 +55,723 @@ a{color:inherit;text-decoration:none}
   align-items:center;
   gap:16px;
 }
-.logo{ font-weight:900; font-size:18px; display:flex; gap:12px; align-items:center; }
-.logo a{ font-weight:900; }
-.nav-links{ display:flex; gap:10px; align-items:center; }
-.nav-links a{
-  font-size:13px;
+
+.logo{
+  font-weight:900;
+  font-size:18px;
+}
+
+/* hours block */
+.nav-hours{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+  text-align:right;
   color:var(--muted);
-  padding:8px 10px;
-  border-radius:10px;
-  border:1px solid transparent;
+  font-size:13px;
 }
-.nav-links a:hover{
-  color:var(--text);
-  border-color:rgba(227,176,75,.22);
-  background:rgba(227,176,75,.08);
+
+.nav-hours .pill{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 12px;
+  border:1px solid var(--stroke);
+  border-radius:999px;
+  background:rgba(20,26,34,.6);
 }
+
+.nav-hours .dot{
+  width:8px;height:8px;border-radius:999px;
+  background:rgba(227,176,75,.9);
+  box-shadow:0 0 0 4px rgba(227,176,75,.14);
+}
+
+.nav-hours a{
+  color:var(--muted);
+  border-bottom:1px dotted rgba(227,176,75,.35);
+}
+.nav-hours a:hover{ color:var(--gold); border-bottom-color:rgba(227,176,75,.75); }
+
+/* HERO (FULL WIDTH PANORAMIC) */
+.hero{
+  width:100vw;
+  margin-left:calc(50% - 50vw);
+  margin-right:calc(50% - 50vw);
+  padding:140px 0;
+  background:
+    linear-gradient(rgba(12,15,18,.75), rgba(12,15,18,.85)),
+    url("images/hero.jpg") center / cover no-repeat;
+}
+
+.hero-inner{
+  max-width:var(--max);
+  margin:auto;
+  padding:0 24px;
+}
+
+.hero h1{
+  font-size:42px;
+  margin:0 0 12px;
+  text-shadow:0 10px 30px rgba(0,0,0,.6);
+}
+
+.hero p{
+  max-width:620px;
+  font-size:16px;
+  color:var(--muted);
+  text-shadow:0 4px 14px rgba(0,0,0,.6);
+}
+
+.hero .cta{ margin-top:22px; }
 
 .btn{
   display:inline-block;
-  padding:10px 14px;
+  padding:12px 18px;
   border-radius:12px;
   border:1px solid var(--stroke);
-  font-weight:900;
+  margin-right:10px;
+  font-weight:700;
 }
+
 .btn.primary{
   background:rgba(227,176,75,.2);
   border-color:rgba(227,176,75,.5);
 }
 
-h1{ margin:18px 0 8px; font-size:30px; }
-p.sub{ margin:0 0 18px; color:var(--muted); }
+/* SECTIONS */
+section{ padding:60px 0; }
+h2{ font-size:28px; margin:0 0 10px; }
+.section-desc{ color:var(--muted); margin:0 0 20px; }
 
-.menu-grid{
+/* CARDS */
+.card{
+  background:rgba(20,26,34,.92);
+  border:1px solid var(--stroke);
+  border-radius:var(--radius);
+  padding:20px;
+  margin-bottom:20px;
+  backdrop-filter: blur(6px);
+}
+
+/* MENU */
+#menu{
+  padding-top:74px;
+  margin-top:10px;
+}
+
+.menu-top{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  margin-bottom:18px;
+}
+
+.menu-subnote{
+  color:var(--muted);
+  font-size:13px;
+}
+
+/* Featured best sellers */
+.featured{
+  border-radius:22px;
+  background:linear-gradient(180deg, rgba(20,26,34,.9), rgba(12,15,18,.92));
+  border:1px solid var(--stroke);
+  padding:18px;
+  margin:18px 0 22px;
+}
+
+.featured-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:12px;
+}
+
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:12px;
+  color:var(--muted);
+}
+
+.badge i{
+  display:inline-block;
+  width:10px;height:10px;
+  border-radius:999px;
+  background:rgba(227,176,75,.9);
+  box-shadow:0 0 0 4px rgba(227,176,75,.15);
+}
+
+.featured-grid{
   display:grid;
   grid-template-columns:repeat(3, 1fr);
+  gap:12px;
+}
+
+.feature-item{
+  background:rgba(15,21,29,.9);
+  border:1px solid rgba(227,176,75,.22);
+  border-radius:16px;
+  padding:14px 14px;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+.feature-item .tag{
+  display:inline-flex;
+  width:max-content;
+  font-size:11px;
+  padding:4px 8px;
+  border-radius:999px;
+  background:rgba(227,176,75,.14);
+  border:1px solid rgba(227,176,75,.30);
+  color:var(--gold);
+  font-weight:700;
+}
+
+.feature-item .name{
+  font-weight:800;
+  letter-spacing:.2px;
+}
+
+.feature-item .desc{
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.35;
+}
+
+/* Photos */
+.photo-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  margin:0 0 22px;
+}
+
+.photo-slot{
+  position:relative;
+  overflow:hidden;
+  border-radius:22px;
+  border:1px solid var(--stroke);
+  background:rgba(20,26,34,.6);
+  min-height:220px;
+}
+
+.photo-slot img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  filter:saturate(1.03) contrast(1.03);
+}
+
+.photo-slot .overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg, rgba(12,15,18,.18), rgba(12,15,18,.70));
+}
+
+.photo-slot .label{
+  position:absolute;
+  left:14px; bottom:14px;
+  font-weight:800;
+  text-shadow:0 10px 28px rgba(0,0,0,.65);
+}
+
+/* Keep these (used elsewhere) */
+.star{
+  margin-left:8px;
+  color:var(--gold);
+  font-weight:900;
+}
+
+/* NEW MENU (Slim menu with photo per item) */
+.slim-menu{
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
   gap:16px;
 }
 
-.menu-card{
+.category-card{
   background:rgba(20,26,34,.92);
   border:1px solid var(--stroke);
   border-radius:22px;
   padding:18px;
 }
 
-.menu-card h3{ margin:0 0 8px; font-size:18px; }
-.rule{ color:var(--muted); font-size:12px; margin:0 0 12px; }
+.category-card h3{
+  margin:0 0 6px;
+  font-size:18px;
+}
 
-.items{ list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px; }
-.item{ padding:10px 0; border-bottom:1px dashed rgba(255,255,255,.10); }
-.item:last-child{ border-bottom:none; }
-.item .top{ display:flex; justify-content:space-between; gap:10px; }
-.item .name{ font-weight:900; }
-.star{ margin-left:8px; color:var(--gold); font-weight:900; }
-.item .sub{ margin-top:6px; color:var(--muted); font-size:12px; line-height:1.35; }
+.category-note{
+  color:var(--muted);
+  font-size:12px;
+  margin:0 0 12px;
+}
 
+.menu-list{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  margin:0;
+  padding:0;
+  list-style:none;
+}
+
+.menu-row{
+  display:grid;
+  grid-template-columns:92px 1fr;
+  gap:12px;
+  align-items:center;
+  padding:12px 0;
+  border-bottom:1px dashed rgba(255,255,255,.10);
+}
+.menu-row:last-child{ border-bottom:none; }
+
+.menu-thumb{
+  width:92px;
+  height:72px;
+  border-radius:16px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(15,21,29,.8);
+}
+
+.menu-thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  filter:saturate(1.05) contrast(1.05);
+}
+
+.menu-info .name{
+  font-weight:900;
+  letter-spacing:.2px;
+  line-height:1.15;
+}
+
+.menu-info .desc{
+  margin-top:6px;
+  color:var(--muted);
+  font-size:12.5px;
+  line-height:1.3;
+}
+
+/* VISIT: email signup */
+.visit-grid{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:16px;
+  align-items:stretch;
+}
+
+.signup-card{
+  background:rgba(20,26,34,.92);
+  border:1px solid var(--stroke);
+  border-radius:var(--radius);
+  padding:18px;
+}
+
+.signup-title{
+  font-weight:900;
+  margin:0 0 6px;
+  font-size:16px;
+}
+
+.signup-desc{
+  color:var(--muted);
+  font-size:13px;
+  margin:0 0 12px;
+  line-height:1.35;
+}
+
+.signup-form{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.signup-form input{
+  flex:1 1 220px;
+  min-width:200px;
+  padding:12px;
+  border-radius:12px;
+  border:1px solid var(--stroke);
+  background:#0b0f14;
+  color:var(--text);
+  outline:none;
+}
+
+.signup-form button{
+  border:1px solid rgba(227,176,75,.5);
+  background:rgba(227,176,75,.2);
+  color:var(--text);
+  padding:12px 16px;
+  border-radius:12px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.signup-form button:hover{
+  border-color:rgba(227,176,75,.75);
+  background:rgba(227,176,75,.28);
+}
+
+.micro{
+  margin-top:10px;
+  color:var(--muted);
+  font-size:12px;
+}
+
+/* FOOTER */
 footer{
   border-top:1px solid var(--stroke);
   padding:30px 0;
   color:var(--muted);
   font-size:14px;
-  margin-top:30px;
 }
 
 @media(max-width:1000px){
-  .menu-grid{ grid-template-columns:repeat(2, 1fr); }
+  .featured-grid{ grid-template-columns:repeat(2, 1fr); }
+  .slim-menu{ grid-template-columns:1fr; }
+  .visit-grid{ grid-template-columns:1fr; }
 }
+
 @media(max-width:800px){
-  .menu-grid{ grid-template-columns:1fr; }
+  .hero h1{ font-size:34px; }
+  .photo-row{ grid-template-columns:1fr; }
+  .nav-hours{ justify-content:flex-start; text-align:left; }
+  .menu-row{ grid-template-columns:78px 1fr; }
+  .menu-thumb{ width:78px; height:64px; border-radius:14px; }
 }
 </style>
 </head>
 
 <body>
 
+<!-- NAV -->
 <div class="nav">
   <div class="nav-inner">
-    <div class="logo">
-      <a href="index.html">Bridgetown Taphouse</a>
-      <div class="nav-links">
-        <a href="index.html#featured">Featured Menu</a>
-        <a href="index.html#visit">Offers</a>
-      </div>
-    </div>
+    <div class="logo">Bridgetown Taphouse</div>
 
-    <a class="btn primary" href="index.html">Back to Home</a>
+    <div class="nav-hours">
+      <div class="pill"><span class="dot"></span><strong style="color:var(--text);font-weight:800;">Open Daily</strong>&nbsp;11:00 AM – 10:00 PM</div>
+      <div class="pill">Call: <a href="tel:17243850287">(724) 385-0287</a></div>
+    </div>
   </div>
 </div>
 
-<div class="wrap">
-  <h1>Full Menu</h1>
-  <p class="sub">Everything, all in one place.</p>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <h1>Where Everybody Knows Your Name</h1>
+    <p>
+      Good drinks, great food, and a neighborhood bar that feels familiar
+      from the moment you walk in.
+    </p>
 
-  <!-- YOUR FULL MENU GRID (UNCHANGED CONTENT) -->
-  <div class="menu-grid">
+    <div class="cta">
+      <a class="btn primary" href="#menu">View Menu</a>
+      <a class="btn" href="#visit">Bridgetown Offers</a>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+
+<!-- MENU -->
+<section id="menu">
+  <div class="menu-top">
+    <h2>Menu</h2>
+    <div class="section-desc">Simple, classic favorites done right.</div>
+    <div class="menu-subnote">Ask your server about daily specials and seasonal items.</div>
+  </div>
+
+  <!-- BEST SELLERS -->
+  <div class="featured">
+    <div class="featured-head">
+      <div style="font-weight:900;font-size:16px;">Best Sellers</div>
+      <div class="badge"><i></i>Most ordered favorites</div>
+    </div>
+
+    <div class="featured-grid">
+      <div class="feature-item">
+        <div class="tag">Best Seller</div>
+        <div class="name">Bridgetown Burger</div>
+        <div class="desc">Bacon, fried egg, Anaheim pepper, Muenster, sautéed onion, burger sauce.</div>
+      </div>
+
+      <div class="feature-item">
+        <div class="tag">Best Seller</div>
+        <div class="name">Velvet Elvis</div>
+        <div class="desc">Bacon, fried egg, peanut butter, American cheese, mayo, pickle.</div>
+      </div>
+
+      <div class="feature-item">
+        <div class="tag">Best Seller</div>
+        <div class="name">The Animal</div>
+        <div class="desc">Classic build with Thousand Island, sautéed onion, pickles &amp; fixings.</div>
+      </div>
+
+      <div class="feature-item">
+        <div class="tag">Best Seller</div>
+        <div class="name">Pittsburgher</div>
+        <div class="desc">Capicola, fried egg, provolone, slaw.</div>
+      </div>
+
+      <div class="feature-item">
+        <div class="tag">Best Seller</div>
+        <div class="name">Bruschetta Grilled Chicken</div>
+        <div class="desc">Fresh mozzarella, bruschetta, balsamic glaze.</div>
+      </div>
+
+      <div class="feature-item">
+        <div class="tag">Best Seller</div>
+        <div class="name">Wings</div>
+        <div class="desc">Bone-in or boneless with dry rubs and saucy classics.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHOTOS (NOW LIVE) -->
+  <div class="photo-row">
+    <div class="photo-slot">
+      <img src="images/best-seller-burgers.jpg" alt="Bridgetown best seller burgers">
+      <div class="overlay"></div>
+      <div class="label">Best Seller Burgers</div>
+    </div>
+
+    <div class="photo-slot">
+      <img src="images/menu-wings.jpg" alt="Bridgetown wings and fries">
+      <div class="overlay"></div>
+      <div class="label">Wings / Chicken Favorites</div>
+    </div>
+  </div>
+
+  <!-- NEW SLIM MENU (with photo next to each item) -->
+  <div class="slim-menu">
 
     <!-- STARTERS -->
-    <div class="menu-card">
-      <h3>Starters</h3>
-      <div class="rule">Great to share.</div>
-      <ul class="items">
-        <li class="item"><div class="top"><div class="name">Edamame</div></div><div class="sub">Warm, lightly salted edamame — simple, clean, and addictive.</div></li>
-        <li class="item"><div class="top"><div class="name">Fries or Tots</div></div><div class="sub">Crispy golden fries or tots, served hot and ready for dipping.</div></li>
-        <li class="item"><div class="top"><div class="name">Chili Fries or Tots</div></div><div class="sub">Loaded with hearty chili and melted cheese — comfort food done right.</div></li>
-        <li class="item"><div class="top"><div class="name">Fresh Mozzarella</div></div><div class="sub">Tomato, basil, balsamic glaze — fresh, bright, and classic.</div></li>
-        <li class="item"><div class="top"><div class="name">Scotch Eggs</div></div><div class="sub">A pub favorite — golden and hearty, perfect with a cold drink.</div></li>
-        <li class="item"><div class="top"><div class="name">Beer-Battered Pickles</div></div><div class="sub">Crunchy beer-battered pickles with that tangy snap in every bite.</div></li>
+    <div class="category-card">
+      <h3>🥨 Starters</h3>
+      <ul class="menu-list">
+
+        <li class="menu-row">
+          <div class="menu-thumb">
+            <img src="images/menu/pretzel-sticks.png" alt="Pretzel Sticks">
+          </div>
+          <div class="menu-info">
+            <div class="name">Pretzel Sticks</div>
+            <div class="desc">Warm, soft pretzels with rich beer cheese for dipping — salty, buttery, and impossible to ignore.</div>
+          </div>
+        </li>
+
+        <li class="menu-row">
+          <div class="menu-thumb">
+            <img src="images/menu/beer-battered-pickles.png" alt="Beer-Battered Pickles">
+          </div>
+          <div class="menu-info">
+            <div class="name">Beer-Battered Pickles</div>
+            <div class="desc">Thick-cut pickles in a crisp beer batter — crunchy outside, tangy inside, gone fast.</div>
+          </div>
+        </li>
+
+        <li class="menu-row">
+          <div class="menu-thumb">
+            <img src="images/menu/fries-or-tots.png" alt="Fries or Tots">
+          </div>
+          <div class="menu-info">
+            <div class="name">Fries or Tots</div>
+            <div class="desc">Hot, golden, and perfectly crisp — made for sharing, but no judgment if you don’t.</div>
+          </div>
+        </li>
+
       </ul>
     </div>
 
-    <!-- SOUPS & SALADS -->
-    <div class="menu-card">
-      <h3>Soups &amp; Salads</h3>
-      <div class="rule">Dressings include ranch, bleu cheese, balsamic vinaigrette, creamy Italian, oil &amp; vinegar, honey mustard.</div>
-      <ul class="items">
-        <li class="item"><div class="top"><div class="name">Soup of the Day</div></div><div class="sub">Ask what’s simmering today — always warm, fresh, and made to hit the spot.</div></li>
-        <li class="item"><div class="top"><div class="name">Turkey Chili</div></div><div class="sub">Rich and hearty with a lighter twist — big flavor, perfect warmth.</div></li>
-        <li class="item"><div class="top"><div class="name">House Salad</div></div><div class="sub">Crisp greens and fresh toppings — simple, refreshing, and clean.</div></li>
-        <li class="item"><div class="top"><div class="name">Chicken Salad</div></div><div class="sub">Tender chicken over fresh greens — protein-packed and satisfying.</div></li>
-        <li class="item"><div class="top"><div class="name">Steak Salad</div></div><div class="sub">Juicy steak over crisp greens — bold, filling, and built like a meal.</div></li>
-        <li class="item"><div class="top"><div class="name">Buffalo Grilled Chicken Salad</div></div><div class="sub">Grilled chicken with Buffalo heat — a spicy, fresh classic.</div></li>
+    <!-- SALADS -->
+    <div class="category-card">
+      <h3>🥗 Salads</h3>
+      <ul class="menu-list">
+
+        <li class="menu-row">
+          <div class="menu-thumb">
+            <img src="images/menu/bridgetown-salad.png" alt="Bridgetown Salad">
+          </div>
+          <div class="menu-info">
+            <div class="name">Bridgetown Salad</div>
+            <div class="desc">Fresh greens, crisp toppings, and house flavor — light, refreshing, and surprisingly filling.</div>
+          </div>
+        </li>
+
+        <li class="menu-row">
+          <div class="menu-thumb">
+            <img src="images/menu/buffalo-grilled-chicken-salad.png" alt="Buffalo Grilled Chicken Salad">
+          </div>
+          <div class="menu-info">
+            <div class="name">Buffalo Grilled Chicken Salad</div>
+            <div class="desc">Grilled chicken with Buffalo heat over fresh greens — bold flavor with a clean finish.</div>
+          </div>
+        </li>
+
       </ul>
     </div>
 
     <!-- BURGERS -->
-    <div class="menu-card">
-      <h3>Burgers</h3>
-      <div class="rule">Choice of beef, turkey, or portobella.</div>
-      <ul class="items">
-        <li class="item"><div class="top"><div class="name">Bridgetown Burger <span class="star">★</span></div></div><div class="sub">Bacon, fried egg, roasted Anaheim pepper, Muenster, sautéed onion, burger sauce.</div></li>
-        <li class="item"><div class="top"><div class="name">Classic Burger</div></div><div class="sub">American cheese, lettuce, tomato, onion — the all-time classic done right.</div></li>
-        <li class="item"><div class="top"><div class="name">Portobella &amp; Swiss</div></div><div class="sub">Portobella cap, sautéed onion, Swiss — savory, melty, and satisfying.</div></li>
-        <li class="item"><div class="top"><div class="name">Black &amp; Bleu</div></div><div class="sub">Bacon, gorgonzola, Cajun seasoning — smoky, bold, and creamy with a kick.</div></li>
-        <li class="item"><div class="top"><div class="name">Pittsburgher <span class="star">★</span></div></div><div class="sub">Capicola, fried egg, provolone, slaw — the Pittsburgh move, stacked and legendary.</div></li>
-        <li class="item"><div class="top"><div class="name">BBQ Burger</div></div><div class="sub">House braised pulled pork, bacon, cheddar, red onion, chipotle BBQ — sweet heat perfection.</div></li>
-        <li class="item"><div class="top"><div class="name">Velvet Elvis <span class="star">★</span></div></div><div class="sub">Bacon, fried egg, peanut butter, American cheese, mayo, pickle — salty/sweet magic.</div></li>
-        <li class="item"><div class="top"><div class="name">The Animal <span class="star">★</span></div></div><div class="sub">American cheese, lettuce, tomato, pickle, sautéed onion, Thousand Island — messy in the best way.</div></li>
-      </ul>
-    </div>
+    <div class="category-card">
+      <h3>🍔 Burgers</h3>
+      <div class="category-note">All burgers served with your choice of fries or tots.</div>
 
-    <!-- SANDWICHES -->
-    <div class="menu-card">
-      <h3>Sandwiches</h3>
-      <div class="rule">Classic favorites.</div>
-      <ul class="items">
-        <li class="item"><div class="top"><div class="name">Steak Hoagie</div></div><div class="sub">Hot, savory steak on a hoagie roll — classic, filling, and always hits.</div></li>
-        <li class="item"><div class="top"><div class="name">Pulled Pork</div></div><div class="sub">Slow-cooked pulled pork — tender, smoky, and packed with flavor.</div></li>
-        <li class="item"><div class="top"><div class="name">House Braised Pulled Pork Sandwich</div></div><div class="sub">House-braised pork piled high — rich, juicy, and built for BBQ lovers.</div></li>
-        <li class="item"><div class="top"><div class="name">Cuban</div></div><div class="sub">A pressed classic — savory, tangy, and stacked with bold deli flavor.</div></li>
-        <li class="item"><div class="top"><div class="name">BLT + Egg</div></div><div class="sub">Bacon, lettuce, tomato plus a fried egg — simple, powerful, and perfect anytime.</div></li>
-        <li class="item"><div class="top"><div class="name">Hippie</div></div><div class="sub">Portobella, gorgonzola, spring mix, sautéed pepper &amp; onion, sundried tomato mayo.</div></li>
-        <li class="item"><div class="top"><div class="name">Rachel</div></div><div class="sub">A deli-style favorite — melty, tangy, and stacked for max comfort.</div></li>
-        <li class="item"><div class="top"><div class="name">Reuben</div></div><div class="sub">Old-school deli legend — hot, melty, and loaded with that classic bite.</div></li>
-        <li class="item"><div class="top"><div class="name">Club</div></div><div class="sub">Triple-stack energy — a classic club built for serious hunger.</div></li>
-        <li class="item"><div class="top"><div class="name">Turkey &amp; Ham Club</div></div><div class="sub">Turkey + ham stacked high — clean, hearty, and always a solid choice.</div></li>
-        <li class="item"><div class="top"><div class="name">Tuna Melt</div></div><div class="sub">Hot and melty tuna comfort — cheesy, savory, and perfectly toasted.</div></li>
+      <ul class="menu-list">
+
+        <li class="menu-row">
+          <div class="menu-thumb">
+            <img src="images/menu/bridgetown-burger.png" alt="Bridgetown Burger">
+          </div>
+          <div class="menu-info">
+            <div class="name">Bridgetown Burger <span class="star">★</span></div>
+            <div class="desc">Bacon, fried egg, roasted Anaheim pepper, Muenster, sautéed onion, and house sauce — stacked, rich, and unforgettable.</div>
+          </div>
+        </li>
+
+        <li class="menu-row">
+          <div class="menu-thumb">
+            <img src="images/menu/pittsburgher.png" alt="Pittsburgher">
+          </div>
+          <div class="menu-info">
+            <div class="name">Pittsburgher <span class="star">★</span></div>
+            <div class="desc">Capicola, fried egg, provolone, and slaw — big flavor, local pride, and pure satisfaction.</div>
+          </div>
+        </li>
+
+        <li class="menu-row">
+          <div class="menu-thumb">
+            <img src="images/menu/velvet-elvis.png" alt="Velvet Elvis">
+          </div>
+          <div class="menu-info">
+            <div class="name">Velvet Elvis <span class="star">★</span></div>
+            <div class="desc">Peanut butter, bacon, banana, and American cheese — sweet, salty, and shockingly perfect.</div>
+          </div>
+        </li>
+
+        <li class="menu-row">
+          <div class="menu-thumb">
+            <img src="images/menu/the-animal.png" alt="The Animal">
+          </div>
+          <div class="menu-info">
+            <div class="name">The Animal <span class="star">★</span></div>
+            <div class="desc">Double meat, double cheese, fully loaded — bold, indulgent, and built to impress.</div>
+          </div>
+        </li>
+
       </ul>
     </div>
 
     <!-- GRILLED CHICKEN -->
-    <div class="menu-card">
-      <h3>Grilled Chicken</h3>
-      <div class="rule">Sandwiches built to order.</div>
-      <ul class="items">
-        <li class="item"><div class="top"><div class="name">Grilled C.B.S.</div></div><div class="sub">Chicken, bacon, Swiss, honey mustard — smoky, sweet, and perfectly balanced.</div></li>
-        <li class="item"><div class="top"><div class="name">Bruschetta Grilled Chicken <span class="star">★</span></div></div><div class="sub">Fresh mozzarella, bruschetta, balsamic glaze — bright, fresh, and craveable.</div></li>
-        <li class="item"><div class="top"><div class="name">La Flama Blanca</div></div><div class="sub">Buffalo, bacon, ghost pepper, habanero jack, jalapeño — heat seekers only.</div></li>
-        <li class="item"><div class="top"><div class="name">BBQ Grilled Chicken</div></div><div class="sub">Bacon, cheddar, chipotle BBQ — smoky-sweet with a little kick.</div></li>
-        <li class="item"><div class="top"><div class="name">Blue Ribbon</div></div><div class="sub">Ham, Muenster &amp; Swiss, mayo, pickle — salty, melty, and smooth.</div></li>
-        <li class="item"><div class="top"><div class="name">Build Your Own Grilled Chicken</div></div><div class="sub">Pick your sauce or seasoning, cheese, and toppings — make it exactly your way.</div></li>
+    <div class="category-card">
+      <h3>🍗 Grilled Chicken</h3>
+      <ul class="menu-list">
+
+        <li class="menu-row">
+          <div class="menu-thumb">
+            <img src="images/menu/bruschetta-grilled-chicken.png" alt="Bruschetta Grilled Chicken">
+          </div>
+          <div class="menu-info">
+            <div class="name">Bruschetta Grilled Chicken</div>
+            <div class="desc">Grilled chicken topped with fresh mozzarella, bright bruschetta, and balsamic glaze — fresh, savory, and crave-worthy.</div>
+          </div>
+        </li>
+
+        <li class="menu-row">
+          <div class="menu-thumb">
+            <img src="images/menu/la-flama-blanca.png" alt="La Flama Blanca">
+          </div>
+          <div class="menu-info">
+            <div class="name">La Flama Blanca</div>
+            <div class="desc">Buffalo heat, bacon, ghost pepper, habanero jack, and jalapeño — fiery, fearless, and not holding back.</div>
+          </div>
+        </li>
+
       </ul>
     </div>
 
     <!-- WINGS -->
-    <div class="menu-card">
-      <h3>Wings</h3>
-      <div class="rule">Bone-in or boneless. Pick dry rubs or sauces.</div>
-      <ul class="items">
-        <li class="item"><div class="top"><div class="name">Traditional Wings <span class="star">★</span></div></div><div class="sub">Crispy, saucy, and made for sharing — choose your flavor and get messy.</div></li>
-        <li class="item"><div class="top"><div class="name">Boneless Wings</div></div><div class="sub">All the flavor with easy bites — tender, sauced up, and dangerously snackable.</div></li>
-        <li class="item"><div class="top"><div class="name">Dry Rubs</div></div><div class="sub">Buffalo Dust, Cajun, Lemon Pepper, Dry Ranch — bold flavor, zero mess.</div></li>
-        <li class="item"><div class="top"><div class="name">Sauces</div></div><div class="sub">Buffalo, Hot Buffalo, Extra Hot Buffalo, Garlic Parm, Garlic Ranch, Honey Jalapeño, Chipotle BBQ, BBQ, Sriracha Honey.</div></li>
+    <div class="category-card">
+      <h3>🍗 Wings</h3>
+      <ul class="menu-list">
+
+        <li class="menu-row">
+          <div class="menu-thumb">
+            <img src="images/menu/traditional-wings.png" alt="Traditional Wings">
+          </div>
+          <div class="menu-info">
+            <div class="name">Traditional Wings <span class="star">★</span></div>
+            <div class="desc">Crispy, juicy wings tossed your way — classic flavors that keep the table buzzing.</div>
+          </div>
+        </li>
+
+        <li class="menu-row">
+          <div class="menu-thumb">
+            <img src="images/menu/boneless-wings.png" alt="Boneless Wings">
+          </div>
+          <div class="menu-info">
+            <div class="name">Boneless Wings</div>
+            <div class="desc">Tender, bite-sized, and sauced up — all the flavor with easy bites.</div>
+          </div>
+        </li>
+
       </ul>
     </div>
 
   </div>
+</section>
+
+<!-- VISIT -->
+<section id="visit">
+  <h2>Visit Us</h2>
+
+  <div class="visit-grid">
+    <div class="card" style="margin-bottom:0;">
+      <p><strong>Bridgetown Taphouse</strong><br>
+      939 Merchant St<br>
+      Ambridge, PA 15003</p>
+
+      <p>Open daily • 11:00 AM – 10:00 PM</p>
+
+      <a class="btn" target="_blank"
+         href="https://www.google.com/maps/search/?api=1&query=939+Merchant+St+Ambridge+PA+15003">
+         Get Directions
+      </a>
+    </div>
+
+    <div class="signup-card">
+      <div class="signup-title">Bridgetown Offers</div>
+      <div class="signup-desc">Get specials, events, and promos sent to your inbox. No spam.</div>
+
+      <form class="signup-form" action="mailto:bridgetowntaphouse@gmail.com" method="post" enctype="text/plain">
+        <input type="email" name="email" placeholder="Enter your email" required>
+        <button type="submit">Get Specials</button>
+      </form>
+
+      <div class="micro">Tip: later we can connect this to Mailchimp or Google Sheets for real list-building.</div>
+    </div>
+  </div>
+</section>
+
 </div>
 
 <footer>
-  <div class="wrap">© Bridgetown Taphouse • Ambridge, PA</div>
+  <div class="wrap">
+    © Bridgetown Taphouse • Ambridge, PA
+  </div>
 </footer>
 
 </body>
