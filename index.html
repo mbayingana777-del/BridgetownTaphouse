@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -284,85 +285,66 @@ h2{ font-size:28px; margin:0 0 10px; }
   text-shadow:0 10px 28px rgba(0,0,0,.65);
 }
 
-/* Keep these (used elsewhere) */
-.star{
-  margin-left:8px;
-  color:var(--gold);
-  font-weight:900;
-}
-
-/* NEW MENU (Slim menu with photo per item) */
-.slim-menu{
+/* Full menu grid */
+.menu-grid{
   display:grid;
-  grid-template-columns:repeat(2, 1fr);
+  grid-template-columns:repeat(3, 1fr);
   gap:16px;
 }
 
-.category-card{
+.menu-card{
   background:rgba(20,26,34,.92);
   border:1px solid var(--stroke);
   border-radius:22px;
   padding:18px;
 }
 
-.category-card h3{
-  margin:0 0 6px;
+.menu-card h3{
+  margin:0 0 8px;
   font-size:18px;
 }
 
-.category-note{
+.rule{
   color:var(--muted);
   font-size:12px;
   margin:0 0 12px;
 }
 
-.menu-list{
+.items{
+  list-style:none;
+  padding:0;
+  margin:0;
   display:flex;
   flex-direction:column;
-  gap:12px;
-  margin:0;
-  padding:0;
-  list-style:none;
+  gap:10px;
 }
 
-.menu-row{
-  display:grid;
-  grid-template-columns:92px 1fr;
-  gap:12px;
-  align-items:center;
-  padding:12px 0;
+.item{
+  padding:10px 0;
   border-bottom:1px dashed rgba(255,255,255,.10);
 }
-.menu-row:last-child{ border-bottom:none; }
+.item:last-child{ border-bottom:none; }
 
-.menu-thumb{
-  width:92px;
-  height:72px;
-  border-radius:16px;
-  overflow:hidden;
-  border:1px solid rgba(255,255,255,.12);
-  background:rgba(15,21,29,.8);
+.item .top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
 }
 
-.menu-thumb img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
-  filter:saturate(1.05) contrast(1.05);
-}
+.item .name{ font-weight:800; }
 
-.menu-info .name{
+.star{
+  margin-left:8px;
+  color:var(--gold);
   font-weight:900;
-  letter-spacing:.2px;
-  line-height:1.15;
 }
 
-.menu-info .desc{
+.item .sub{
   margin-top:6px;
   color:var(--muted);
-  font-size:12.5px;
-  line-height:1.3;
+  font-size:12px;
+  line-height:1.35;
 }
 
 /* VISIT: email signup */
@@ -441,16 +423,15 @@ footer{
 
 @media(max-width:1000px){
   .featured-grid{ grid-template-columns:repeat(2, 1fr); }
-  .slim-menu{ grid-template-columns:1fr; }
+  .menu-grid{ grid-template-columns:repeat(2, 1fr); }
   .visit-grid{ grid-template-columns:1fr; }
 }
 
 @media(max-width:800px){
   .hero h1{ font-size:34px; }
   .photo-row{ grid-template-columns:1fr; }
+  .menu-grid{ grid-template-columns:1fr; }
   .nav-hours{ justify-content:flex-start; text-align:left; }
-  .menu-row{ grid-template-columns:78px 1fr; }
-  .menu-thumb{ width:78px; height:64px; border-radius:14px; }
 }
 </style>
 </head>
@@ -556,178 +537,218 @@ footer{
     </div>
   </div>
 
-  <!-- NEW SLIM MENU (with photo next to each item) -->
-  <div class="slim-menu">
+  <!-- FULL MENU -->
+  <div class="menu-grid">
 
     <!-- STARTERS -->
-    <div class="category-card">
-      <h3>🥨 Starters</h3>
-      <ul class="menu-list">
-
-        <li class="menu-row">
-          <div class="menu-thumb">
-            <img src="images/menu/pretzel-sticks.png" alt="Pretzel Sticks">
-          </div>
-          <div class="menu-info">
-            <div class="name">Pretzel Sticks</div>
-            <div class="desc">Warm, soft pretzels with rich beer cheese for dipping — salty, buttery, and impossible to ignore.</div>
-          </div>
+    <div class="menu-card">
+      <h3>Starters</h3>
+      <div class="rule">Great to share.</div>
+      <ul class="items">
+        <li class="item">
+          <div class="top"><div class="name">Edamame</div></div>
+          <div class="sub">Warm, lightly salted edamame — simple, clean, and addictive.</div>
         </li>
-
-        <li class="menu-row">
-          <div class="menu-thumb">
-            <img src="images/menu/beer-battered-pickles.png" alt="Beer-Battered Pickles">
-          </div>
-          <div class="menu-info">
-            <div class="name">Beer-Battered Pickles</div>
-            <div class="desc">Thick-cut pickles in a crisp beer batter — crunchy outside, tangy inside, gone fast.</div>
-          </div>
+        <li class="item">
+          <div class="top"><div class="name">Fries or Tots</div></div>
+          <div class="sub">Crispy golden fries or tots, served hot and ready for dipping.</div>
         </li>
-
-        <li class="menu-row">
-          <div class="menu-thumb">
-            <img src="images/menu/fries-or-tots.png" alt="Fries or Tots">
-          </div>
-          <div class="menu-info">
-            <div class="name">Fries or Tots</div>
-            <div class="desc">Hot, golden, and perfectly crisp — made for sharing, but no judgment if you don’t.</div>
-          </div>
+        <li class="item">
+          <div class="top"><div class="name">Chili Fries or Tots</div></div>
+          <div class="sub">Loaded with hearty chili and melted cheese — comfort food done right.</div>
         </li>
-
+        <li class="item">
+          <div class="top"><div class="name">Fresh Mozzarella</div></div>
+          <div class="sub">Tomato, basil, balsamic glaze — fresh, bright, and classic.</div>
+        </li>
+        <li class="item">
+          <div class="top"><div class="name">Scotch Eggs</div></div>
+          <div class="sub">A pub favorite — golden and hearty, perfect with a cold drink.</div>
+        </li>
+        <li class="item">
+          <div class="top"><div class="name">Beer-Battered Pickles</div></div>
+          <div class="sub">Crunchy beer-battered pickles with that tangy snap in every bite.</div>
+        </li>
       </ul>
     </div>
 
-    <!-- SALADS -->
-    <div class="category-card">
-      <h3>🥗 Salads</h3>
-      <ul class="menu-list">
-
-        <li class="menu-row">
-          <div class="menu-thumb">
-            <img src="images/menu/bridgetown-salad.png" alt="Bridgetown Salad">
-          </div>
-          <div class="menu-info">
-            <div class="name">Bridgetown Salad</div>
-            <div class="desc">Fresh greens, crisp toppings, and house flavor — light, refreshing, and surprisingly filling.</div>
-          </div>
+    <!-- SOUPS & SALADS -->
+    <div class="menu-card">
+      <h3>Soups &amp; Salads</h3>
+      <div class="rule">Dressings include ranch, bleu cheese, balsamic vinaigrette, creamy Italian, oil &amp; vinegar, honey mustard.</div>
+      <ul class="items">
+        <li class="item">
+          <div class="top"><div class="name">Soup of the Day</div></div>
+          <div class="sub">Ask what’s simmering today — always warm, fresh, and made to hit the spot.</div>
         </li>
-
-        <li class="menu-row">
-          <div class="menu-thumb">
-            <img src="images/menu/buffalo-grilled-chicken-salad.png" alt="Buffalo Grilled Chicken Salad">
-          </div>
-          <div class="menu-info">
-            <div class="name">Buffalo Grilled Chicken Salad</div>
-            <div class="desc">Grilled chicken with Buffalo heat over fresh greens — bold flavor with a clean finish.</div>
-          </div>
+        <li class="item">
+          <div class="top"><div class="name">Turkey Chili</div></div>
+          <div class="sub">Rich and hearty with a lighter twist — big flavor, perfect warmth.</div>
         </li>
-
+        <li class="item">
+          <div class="top"><div class="name">House Salad</div></div>
+          <div class="sub">Crisp greens and fresh toppings — simple, refreshing, and clean.</div>
+        </li>
+        <li class="item">
+          <div class="top"><div class="name">Chicken Salad</div></div>
+          <div class="sub">Tender chicken over fresh greens — protein-packed and satisfying.</div>
+        </li>
+        <li class="item">
+          <div class="top"><div class="name">Steak Salad</div></div>
+          <div class="sub">Juicy steak over crisp greens — bold, filling, and built like a meal.</div>
+        </li>
+        <li class="item">
+          <div class="top"><div class="name">Buffalo Grilled Chicken Salad</div></div>
+          <div class="sub">Grilled chicken with Buffalo heat — a spicy, fresh classic.</div>
+        </li>
       </ul>
     </div>
 
     <!-- BURGERS -->
-    <div class="category-card">
-      <h3>🍔 Burgers</h3>
-      <div class="category-note">All burgers served with your choice of fries or tots.</div>
-
-      <ul class="menu-list">
-
-        <li class="menu-row">
-          <div class="menu-thumb">
-            <img src="images/menu/bridgetown-burger.png" alt="Bridgetown Burger">
-          </div>
-          <div class="menu-info">
-            <div class="name">Bridgetown Burger <span class="star">★</span></div>
-            <div class="desc">Bacon, fried egg, roasted Anaheim pepper, Muenster, sautéed onion, and house sauce — stacked, rich, and unforgettable.</div>
-          </div>
+    <div class="menu-card">
+      <h3>Burgers</h3>
+      <div class="rule">Choice of beef, turkey, or portobella.</div>
+      <ul class="items">
+        <li class="item">
+          <div class="top"><div class="name">Bridgetown Burger <span class="star">★</span></div></div>
+          <div class="sub">Bacon, fried egg, roasted Anaheim pepper, Muenster, sautéed onion, burger sauce.</div>
         </li>
-
-        <li class="menu-row">
-          <div class="menu-thumb">
-            <img src="images/menu/pittsburgher.png" alt="Pittsburgher">
-          </div>
-          <div class="menu-info">
-            <div class="name">Pittsburgher <span class="star">★</span></div>
-            <div class="desc">Capicola, fried egg, provolone, and slaw — big flavor, local pride, and pure satisfaction.</div>
-          </div>
+        <li class="item">
+          <div class="top"><div class="name">Classic Burger</div></div>
+          <div class="sub">American cheese, lettuce, tomato, onion — the all-time classic done right.</div>
         </li>
-
-        <li class="menu-row">
-          <div class="menu-thumb">
-            <img src="images/menu/velvet-elvis.png" alt="Velvet Elvis">
-          </div>
-          <div class="menu-info">
-            <div class="name">Velvet Elvis <span class="star">★</span></div>
-            <div class="desc">Peanut butter, bacon, banana, and American cheese — sweet, salty, and shockingly perfect.</div>
-          </div>
+        <li class="item">
+          <div class="top"><div class="name">Portobella &amp; Swiss</div></div>
+          <div class="sub">Portobella cap, sautéed onion, Swiss — savory, melty, and satisfying.</div>
         </li>
-
-        <li class="menu-row">
-          <div class="menu-thumb">
-            <img src="images/menu/the-animal.png" alt="The Animal">
-          </div>
-          <div class="menu-info">
-            <div class="name">The Animal <span class="star">★</span></div>
-            <div class="desc">Double meat, double cheese, fully loaded — bold, indulgent, and built to impress.</div>
-          </div>
+        <li class="item">
+          <div class="top"><div class="name">Black &amp; Bleu</div></div>
+          <div class="sub">Bacon, gorgonzola, Cajun seasoning — smoky, bold, and creamy with a kick.</div>
         </li>
+        <li class="item">
+          <div class="top"><div class="name">Pittsburgher <span class="star">★</span></div></div>
+          <div class="sub">Capicola, fried egg, provolone, slaw — the Pittsburgh move, stacked and legendary.</div>
+        </li>
+        <li class="item">
+          <div class="top"><div class="name">BBQ Burger</div></div>
+          <div class="sub">House braised pulled pork, bacon, cheddar, red onion, chipotle BBQ — sweet heat perfection.</div>
+        </li>
+        <li class="item">
+          <div class="top"><div class="name">Velvet Elvis <span class="star">★</span></div></div>
+          <div class="sub">Bacon, fried egg, peanut butter, American cheese, mayo, pickle — salty/sweet magic.</div>
+        </li>
+        <li class="item">
+          <div class="top"><div class="name">The Animal <span class="star">★</span></div></div>
+          <div class="sub">American cheese, lettuce, tomato, pickle, sautéed onion, Thousand Island — messy in the best way.</div>
+        </li>
+      </ul>
+    </div>
 
+    <!-- SANDWICHES -->
+    <div class="menu-card">
+      <h3>Sandwiches</h3>
+      <div class="rule">Classic favorites.</div>
+      <ul class="items">
+        <li class="item">
+          <div class="top"><div class="name">Steak Hoagie</div></div>
+          <div class="sub">Hot, savory steak on a hoagie roll — classic, filling, and always hits.</div>
+        </li>
+        <li class="item">
+          <div class="top"><div class="name">Pulled Pork</div></div>
+          <div class="sub">Slow-cooked pulled pork — tender, smoky, and packed with flavor.</div>
+        </li>
+        <li class="item">
+          <div class="top"><div class="name">House Braised Pulled Pork Sandwich</div></div>
+          <div class="sub">House-braised pork piled high — rich, juicy, and built for BBQ lovers.</div>
+        </li>
+        <li class="item">
+          <div class="top"><div class="name">Cuban</div></div>
+          <div class="sub">A pressed classic — savory, tangy, and stacked with bold deli flavor.</div>
+        </li>
+        <li class="item">
+          <div class="top"><div class="name">BLT + Egg</div></div>
+          <div class="sub">Bacon, lettuce, tomato plus a fried egg — simple, powerful, and perfect anytime.</div>
+        </li>
+        <li class="item">
+          <div class="top"><div class="name">Hippie</div></div>
+          <div class="sub">Portobella, gorgonzola, spring mix, sautéed pepper &amp; onion, sundried tomato mayo.</div>
+        </li>
+        <li class="item">
+          <div class="top"><div class="name">Rachel</div></div>
+          <div class="sub">A deli-style favorite — melty, tangy, and stacked for max comfort.</div>
+        </li>
+        <li class="item">
+          <div class="top"><div class="name">Reuben</div></div>
+          <div class="sub">Old-school deli legend — hot, melty, and loaded with that classic bite.</div>
+        </li>
+        <li class="item">
+          <div class="top"><div class="name">Club</div></div>
+          <div class="sub">Triple-stack energy — a classic club built for serious hunger.</div>
+        </li>
+        <li class="item">
+          <div class="top"><div class="name">Turkey &amp; Ham Club</div></div>
+          <div class="sub">Turkey + ham stacked high — clean, hearty, and always a solid choice.</div>
+        </li>
+        <li class="item">
+          <div class="top"><div class="name">Tuna Melt</div></div>
+          <div class="sub">Hot and melty tuna comfort — cheesy, savory, and perfectly toasted.</div>
+        </li>
       </ul>
     </div>
 
     <!-- GRILLED CHICKEN -->
-    <div class="category-card">
-      <h3>🍗 Grilled Chicken</h3>
-      <ul class="menu-list">
-
-        <li class="menu-row">
-          <div class="menu-thumb">
-            <img src="images/menu/bruschetta-grilled-chicken.png" alt="Bruschetta Grilled Chicken">
-          </div>
-          <div class="menu-info">
-            <div class="name">Bruschetta Grilled Chicken</div>
-            <div class="desc">Grilled chicken topped with fresh mozzarella, bright bruschetta, and balsamic glaze — fresh, savory, and crave-worthy.</div>
-          </div>
+    <div class="menu-card">
+      <h3>Grilled Chicken</h3>
+      <div class="rule">Sandwiches built to order.</div>
+      <ul class="items">
+        <li class="item">
+          <div class="top"><div class="name">Grilled C.B.S.</div></div>
+          <div class="sub">Chicken, bacon, Swiss, honey mustard — smoky, sweet, and perfectly balanced.</div>
         </li>
-
-        <li class="menu-row">
-          <div class="menu-thumb">
-            <img src="images/menu/la-flama-blanca.png" alt="La Flama Blanca">
-          </div>
-          <div class="menu-info">
-            <div class="name">La Flama Blanca</div>
-            <div class="desc">Buffalo heat, bacon, ghost pepper, habanero jack, and jalapeño — fiery, fearless, and not holding back.</div>
-          </div>
+        <li class="item">
+          <div class="top"><div class="name">Bruschetta Grilled Chicken <span class="star">★</span></div></div>
+          <div class="sub">Fresh mozzarella, bruschetta, balsamic glaze — bright, fresh, and craveable.</div>
         </li>
-
+        <li class="item">
+          <div class="top"><div class="name">La Flama Blanca</div></div>
+          <div class="sub">Buffalo, bacon, ghost pepper, habanero jack, jalapeño — heat seekers only.</div>
+        </li>
+        <li class="item">
+          <div class="top"><div class="name">BBQ Grilled Chicken</div></div>
+          <div class="sub">Bacon, cheddar, chipotle BBQ — smoky-sweet with a little kick.</div>
+        </li>
+        <li class="item">
+          <div class="top"><div class="name">Blue Ribbon</div></div>
+          <div class="sub">Ham, Muenster &amp; Swiss, mayo, pickle — salty, melty, and smooth.</div>
+        </li>
+        <li class="item">
+          <div class="top"><div class="name">Build Your Own Grilled Chicken</div></div>
+          <div class="sub">Pick your sauce or seasoning, cheese, and toppings — make it exactly your way.</div>
+        </li>
       </ul>
     </div>
 
     <!-- WINGS -->
-    <div class="category-card">
-      <h3>🍗 Wings</h3>
-      <ul class="menu-list">
-
-        <li class="menu-row">
-          <div class="menu-thumb">
-            <img src="images/menu/traditional-wings.png" alt="Traditional Wings">
-          </div>
-          <div class="menu-info">
-            <div class="name">Traditional Wings <span class="star">★</span></div>
-            <div class="desc">Crispy, juicy wings tossed your way — classic flavors that keep the table buzzing.</div>
-          </div>
+    <div class="menu-card">
+      <h3>Wings</h3>
+      <div class="rule">Bone-in or boneless. Pick dry rubs or sauces.</div>
+      <ul class="items">
+        <li class="item">
+          <div class="top"><div class="name">Traditional Wings <span class="star">★</span></div></div>
+          <div class="sub">Crispy, saucy, and made for sharing — choose your flavor and get messy.</div>
         </li>
-
-        <li class="menu-row">
-          <div class="menu-thumb">
-            <img src="images/menu/boneless-wings.png" alt="Boneless Wings">
-          </div>
-          <div class="menu-info">
-            <div class="name">Boneless Wings</div>
-            <div class="desc">Tender, bite-sized, and sauced up — all the flavor with easy bites.</div>
-          </div>
+        <li class="item">
+          <div class="top"><div class="name">Boneless Wings</div></div>
+          <div class="sub">All the flavor with easy bites — tender, sauced up, and dangerously snackable.</div>
         </li>
-
+        <li class="item">
+          <div class="top"><div class="name">Dry Rubs</div></div>
+          <div class="sub">Buffalo Dust, Cajun, Lemon Pepper, Dry Ranch — bold flavor, zero mess.</div>
+        </li>
+        <li class="item">
+          <div class="top"><div class="name">Sauces</div></div>
+          <div class="sub">Buffalo, Hot Buffalo, Extra Hot Buffalo, Garlic Parm, Garlic Ranch, Honey Jalapeño, Chipotle BBQ, BBQ, Sriracha Honey.</div>
+        </li>
       </ul>
     </div>
 
