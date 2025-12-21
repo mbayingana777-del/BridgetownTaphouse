@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -413,6 +412,10 @@ h2{ font-size:28px; margin:0 0 10px; }
   font-size:12px;
 }
 
+/* ✅ (Missing thing #2) success/error styles for the message */
+.micro.success{ color:#9fe870; }
+.micro.error{ color:#ff8a8a; }
+
 /* FOOTER */
 footer{
   border-top:1px solid var(--stroke);
@@ -777,12 +780,14 @@ footer{
       <div class="signup-title">Bridgetown Offers</div>
       <div class="signup-desc">Get specials, events, and promos sent to your inbox. No spam.</div>
 
-      <form class="signup-form" action="mailto:bridgetowntaphouse@gmail.com" method="post" enctype="text/plain">
-        <input type="email" name="email" placeholder="Enter your email" required>
-        <button type="submit">Get Specials</button>
+      <!-- ✅ (Missing thing #1) Replace mailto form with IDs that match the script -->
+      <form class="signup-form" id="offersForm">
+        <input type="email" id="offerEmail" name="email" placeholder="Enter your email" required>
+        <button type="submit" id="offerBtn">Get Specials</button>
       </form>
 
-      <div class="micro">Tip: later we can connect this to Mailchimp or Google Sheets for real list-building.</div>
+      <!-- ✅ (Missing thing #3) A message element the script can write into -->
+      <div class="micro" id="offerMsg"></div>
     </div>
   </div>
 </section>
@@ -794,42 +799,70 @@ footer{
     © Bridgetown Taphouse • Ambridge, PA
   </div>
 </footer>
+
 <script>
+/*
+  Bridgetown Offers → Google Sheets via Google Apps Script Web App
+  What this script expects in the HTML:
+    - <form id="offersForm">
+    - <input id="offerEmail">
+    - <button id="offerBtn">
+    - <div id="offerMsg">
+*/
+
 const form = document.getElementById("offersForm");
 const emailInput = document.getElementById("offerEmail");
 const msg = document.getElementById("offerMsg");
 const btn = document.getElementById("offerBtn");
 
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  btn.disabled = true;
-  msg.textContent = "Submitting…";
+if (!form || !emailInput || !msg || !btn) {
+  console.warn("Offers form elements not found. Check IDs: offersForm, offerEmail, offerMsg, offerBtn");
+} else {
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-  try {
-    await fetch(
-      "https://script.google.com/macros/s/AKfycbzvNhw9TvZAHqzEhEUDH4KjZ2ymNzxi-G35F7jXJBbDYzwE-_1d9uPP1kVosE7tPvI5/exec",
-      {
-        method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: emailInput.value,
-          timestamp: new Date().toISOString()
-        })
-      }
-    );
+    const email = (emailInput.value || "").trim();
 
-    msg.textContent = "You're in. Watch your inbox.";
-    msg.className = "micro success";
-    form.reset();
-  } catch (err) {
-    msg.textContent = "Something went wrong. Try again.";
-    msg.className = "micro error";
-  }
+    if (!email) {
+      msg.textContent = "Please enter an email.";
+      msg.className = "micro error";
+      return;
+    }
 
-  btn.disabled = false;
-});
+    btn.disabled = true;
+    msg.textContent = "Submitting…";
+    msg.className = "micro";
+
+    try {
+      // NOTE: mode:"no-cors" is used to avoid CORS issues on GitHub Pages.
+      // This means the response is opaque (we can’t read success/fail from the server response).
+      await fetch(
+        "https://script.google.com/macros/s/AKfycbzvNhw9TvZAHqzEhEUDH4KjZ2ymNzxi-G35F7jXJBbDYzwE-_1d9uPP1kVosE7tPvI5/exec",
+        {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email,
+            timestamp: new Date().toISOString(),
+            source: "website_offers_form"
+          })
+        }
+      );
+
+      msg.textContent = "You're in. Watch your inbox.";
+      msg.className = "micro success";
+      form.reset();
+    } catch (err) {
+      msg.textContent = "Something went wrong. Try again.";
+      msg.className = "micro error";
+    }
+
+    btn.disabled = false;
+  });
+}
 </script>
 
 </body>
 </html>
+
